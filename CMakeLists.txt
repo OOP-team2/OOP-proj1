@@ -9,4 +9,4 @@ add_executable(OOP_proj1
         Ingredient.cpp
         main.cpp
         PlanManager.cpp
-        PlanManager.h Plan.cpp Plan.h)
+        PlanManager.h Plan.cpp Plan.h Date.cpp Date.h)

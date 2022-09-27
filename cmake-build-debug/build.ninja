@@ -74,6 +74,13 @@ build CMakeFiles/OOP_proj1.dir/Plan.cpp.o: CXX_COMPILER__OOP_proj1_Debug /Users/
   OBJECT_DIR = CMakeFiles/OOP_proj1.dir
   OBJECT_FILE_DIR = CMakeFiles/OOP_proj1.dir
 
+build CMakeFiles/OOP_proj1.dir/Date.cpp.o: CXX_COMPILER__OOP_proj1_Debug /Users/hojooneum/OOP-proj1/Date.cpp || cmake_object_order_depends_target_OOP_proj1
+  DEP_FILE = CMakeFiles/OOP_proj1.dir/Date.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -std=gnu++14
+  INCLUDES = -I/Users/hojooneum/OOP-proj1/.
+  OBJECT_DIR = CMakeFiles/OOP_proj1.dir
+  OBJECT_FILE_DIR = CMakeFiles/OOP_proj1.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target OOP_proj1
@@ -82,7 +89,7 @@ build CMakeFiles/OOP_proj1.dir/Plan.cpp.o: CXX_COMPILER__OOP_proj1_Debug /Users/
 #############################################
 # Link the executable OOP_proj1
 
-build OOP_proj1: CXX_EXECUTABLE_LINKER__OOP_proj1_Debug CMakeFiles/OOP_proj1.dir/Ingredient.cpp.o CMakeFiles/OOP_proj1.dir/main.cpp.o CMakeFiles/OOP_proj1.dir/PlanManager.cpp.o CMakeFiles/OOP_proj1.dir/Plan.cpp.o
+build OOP_proj1: CXX_EXECUTABLE_LINKER__OOP_proj1_Debug CMakeFiles/OOP_proj1.dir/Ingredient.cpp.o CMakeFiles/OOP_proj1.dir/main.cpp.o CMakeFiles/OOP_proj1.dir/PlanManager.cpp.o CMakeFiles/OOP_proj1.dir/Plan.cpp.o CMakeFiles/OOP_proj1.dir/Date.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk
   OBJECT_DIR = CMakeFiles/OOP_proj1.dir
   POST_BUILD = :

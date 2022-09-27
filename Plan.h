@@ -6,20 +6,20 @@
 #define OOP_PROJ1_PLAN_H
 
 
+#include "Date.h"
+
 class Plan {
 private:
     Meal menu;
     int meal_type;
-    Date date;
 public:
-    Plan();
-    Plan(Meal menu, int meal_type, Date date);
+    Plan(Meal new_menu, int new_meal_type, Date new_date);
     Date getDate();
     Meal getMeal();
     int getMealType();
-    void setDate();
-    void setMealType(int meal_type);
-    void setMeal(Meal meal);
+    void setDate(Date new_date);
+    void setMealType(int new_meal_type);
+    void setMeal(Meal new_menu);
     void showPlan();
 };
 
