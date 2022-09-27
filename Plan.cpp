@@ -3,15 +3,16 @@
 //
 
 #include "Plan.h"
+#include "Date.h"
 
-Plan::Plan(Meal menu, int meal_type, Date date) {
-    menu = menu;
-    meal_type = meal_type;
-    date = date;
+Plan::Plan(Meal new_menu, int new_meal_type, Date new_date) {
+    menu = new_menu;
+    meal_type = new_meal_type;
+    date = new_date;
 }
 
-int Plan::getDate() {
-    return  date;
+Date Plan::getDate() {
+    return date;
 }
 
 Meal Plan::getMeal() {
@@ -30,8 +31,8 @@ void Plan::setMealType(int new_meal_type) {
     meal_type = new_meal_type;
 }
 
-void Plan::setMeal(int meal) {
-    menu = meal;
+void Plan::setMeal(int new_menu) {
+    menu = new_menu;
 }
 
 void Plan::showPlan() {
