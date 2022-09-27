@@ -4,6 +4,8 @@
 
 #include "PlanManager.h"
 #include "iostream"
+#include "Date.h"
+
 using namespace planmanager;
 using namespace std;
 
@@ -46,7 +48,9 @@ namespace planmanager {
     }
     void PlanManager::showAllPlan() {
         for (auto plan : plans) {
-            cout << plan.meal << ' ' << plan.Meal_Type << ' ' << plan.date << endl;
+            cout << plan.meal << ' ' << plan.getMealType() << ' ' << plan.getDate() << endl;
         }
     }
+
+    PlanManager::PlanManager(const vector <Plan> &plans) : plans(plans) {}
 } // planmanager

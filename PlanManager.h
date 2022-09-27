@@ -2,7 +2,9 @@
 // Created by HoJoonEum on 2022/09/26.
 //
 #include "vector"
-#include "plan"
+#include "Plan.h"
+#include "Date.h"
+
 #ifndef OOP_PROJ1_PLANMANAGER_H
 #define OOP_PROJ1_PLANMANAGER_H
 
@@ -10,9 +12,14 @@ namespace planmanager {
 
     class PlanManager {
     private:
-        vector<Plan> plans;
+        PlanManager(std::vector<Plan> newPlans);
+
+        std::vector<Plan> plans;
     public:
         PlanManager();
+
+        explicit PlanManager(const std::vector <Plan> &plans);
+
         void addPlan(Plan plan);
         void deletePlan(Plan plan);
         void reviseMeal(Plan plan, Meal meal);
