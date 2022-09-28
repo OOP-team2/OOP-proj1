@@ -6,7 +6,6 @@
 #include "iostream"
 #include "Date.h"
 
-using namespace planmanager;
 using namespace std;
 PlanManager::PlanManager(const vector <Plan> &plans) : plans(plans) {}
 
@@ -32,7 +31,7 @@ void PlanManager::reviseMeal(Plan plan, Meal meal) {
         }
     }
 }
-void PlanManager::reviseMealType(Plan plan, Meal_Typw meal_type) {
+void PlanManager::reviseMealType(Plan plan, Meal_Type meal_type) {
     for (auto existingPlan = plans.begin(); existingPlan != plans.end(); existingPlan++) {
         if (*existingPlan == plan) {
             (*existingPlan).setMealType(meal_type);
@@ -48,6 +47,6 @@ void PlanManager::reviseDate(Plan plan, Date date) {
 }
 void PlanManager::showAllPlan() {
     for (auto plan : plans) {
-        cout << plan.meal << ' ' << plan.getMealType() << ' ' << plan.getDate() << endl;
+        cout << plan.getMeal() << ' ' << plan.getMealType() << ' ' << plan.getDate() << endl;
     }
 }
