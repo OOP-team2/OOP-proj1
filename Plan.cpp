@@ -31,7 +31,7 @@ void Plan::setMealType(int new_meal_type) {
     meal_type = new_meal_type;
 }
 
-void Plan::setMeal(int new_menu) {
+void Plan::setMeal(Meal new_menu) {
     menu = new_menu;
 }
 
