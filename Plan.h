@@ -5,7 +5,7 @@
 #ifndef OOP_PROJ1_PLAN_H
 #define OOP_PROJ1_PLAN_H
 
-
+#include "Meal.h"
 #include "Date.h"
 
 class Plan {
