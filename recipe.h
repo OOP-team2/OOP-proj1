@@ -32,7 +32,7 @@ class Recipe{
     
         //function
         void editIngredient(Ingredient add_ingredient);
-        bool removeIngredient(std::string ingredient);
+        void removeIngredient(std::string ingredient);
         void addCookingOrder(std::string order);
         void deleteCookingOrder();
         void printRecipe();
