@@ -60,7 +60,7 @@ void Recipe::removeIngredient(std::string ingredient){
             std::cout<<ingredient<<" has been removed."<<"\n";
         }
     }
-    std::cout<<ingredient<<" has been removed."<<"\n";
+    std::cout<<"There are no "<<ingredient<<"on the list."<<"\n";
 }
 
 void Recipe::addCookingOrder(std::string order){
