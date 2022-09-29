@@ -76,7 +76,7 @@ void Recipe::printRecipe(){
     if (getIngredients().size())
     {
         std::cout << "\n";
-        std::cout << " <Ingredients List>" << "\n";
+        std::cout << " [Ingredients List] " << "\n";
         for (int i = 0; i < getIngredients().size(); i++)
         {
             std::cout << " " << i + 1 << ". " << getIngredients()[i].getName() << "    "
@@ -87,7 +87,7 @@ void Recipe::printRecipe(){
     if (getCookingOrder().size())
     {
         std::cout << "\n";
-        std::cout << " Cooking Order " << "\n";
+        std::cout << " <Cooking Order> " << "\n";
         for (int i = 0; i < getCookingOrder().size(); i++)
         {
             std::cout << " " << i + 1 << ". " << getCookingOrder()[i] << "\n";
