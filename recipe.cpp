@@ -53,14 +53,14 @@ void Recipe::editIngredient(Ingredient add_ingredient){
     ingredients.push_back(add_ingredient);
 }
 
-bool Recipe::removeIngredient(std::string ingredient){
+void Recipe::removeIngredient(std::string ingredient){
     for (int i = 0; i < ingredients.size(); i++) {
         if (ingredients[i].getName() == ingredient) {
             ingredients.erase(ingredients.begin() + i);
-            return true;
+            std::cout<<ingredient<<" has been removed."<<"\n";
         }
     }
-    return false;
+    std::cout<<ingredient<<" has been removed."<<"\n";
 }
 
 void Recipe::addCookingOrder(std::string order){
