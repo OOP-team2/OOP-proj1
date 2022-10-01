@@ -33,8 +33,7 @@ void Recipe::setIngredients(std::vector<Ingredient> ingredients) {
     ingredients = ingredients;
 }
 void Recipe::setCookingOrder(std::vector<std::string> order){
-    cooking_order.clear();
-    cooking_order.push_back(order);
+    cooking_order = order;
 }
 
 
