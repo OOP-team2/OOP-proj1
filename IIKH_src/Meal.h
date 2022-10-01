@@ -5,16 +5,27 @@
 #ifndef OOP_PROJ1_MEAL_H
 #define OOP_PROJ1_MEAL_H
 
+#include <vector>
+#include "Serving.h"
+
+enum MealType { breakfast, launch, dinner };
 
 class Meal {
 private:
-    vector<Serving> servings;
+    std::vector<Serving> servings;
+    int people = 0;
+    int id;
 public:
     Meal();
-    void addServing(Serving serving, int people);
+    Meal(int& new_id);
+    int getId();
+    void addServing(Serving serving);
+    void setPeople(int new_people);
+    int getPeople();
     void deleteServing(Serving serving_to_delete);
     void showServings();
-    vector<Serving> getServings();
+    std::vector<Serving> getServings();
+    bool operator== (Meal otherMeal);
 };
 
 

@@ -3,24 +3,46 @@
 //
 
 #include "Meal.h"
-Meal::Meal() {}
 
-void Meal::addServing(Serving serving, int people) {
+Meal::Meal() {};
+Meal::Meal(int& new_id) {
+    id = id;
+    id++;
+};
+
+int Meal::getId() {
+    return id;
+}
+
+int Meal::getPeople() {
+    return people;
+}
+void Meal::setPeople(int new_people) {
+    people = new_people;
+}
+
+void Meal::addServing(Serving serving) {
     servings.push_back(serving);
 }
 
-void Meal::deleteServing(int serving_to_delete) {
-    for (auto serving : servings) {
-        if (serving == serving_to_delete) {
-            servings.erase(serving_to_delete);
-        }
-    }
+void Meal::deleteServing(Serving serving_to_delete) {
+    // need to implement
+    return;
 }
 
-vector<Serving> Meal::getServings() {
+std::vector<Serving> Meal::getServings() {
     return servings;
 }
 
 void Meal::showServings() {
     return;
+}
+
+bool Meal::operator==(Meal otherMeal) {
+    if (id == otherMeal.getId()) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
