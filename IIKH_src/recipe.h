@@ -26,8 +26,8 @@ class Recipe{
             
         //set_recipe(correction)
         void setRecipeName(std::string name);
-        void setTime(int time);
-        void setIngredients(std::vector<Ingredient> ingredients);
+        void setTime(int s_time);
+        void setIngredients(std::vector<Ingredient> s_ingredients);
         void setCookingOrder(std::vector<std::string> order);
     
         //function
