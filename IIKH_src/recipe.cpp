@@ -1,4 +1,4 @@
-#include "recipe.cpp"
+#include "recipe.hpp"
 
 Recipe::Recipe(std::string new_recipe_name,int new_time,std::vector<Ingredient> new_ingredients, std::vector<std::string> new_cooking_order){
     recipe_name = new_recipe_name;
@@ -32,9 +32,11 @@ void Recipe::setTime(int time) {
 void Recipe::setIngredients(std::vector<Ingredient> ingredients) {
     ingredients = ingredients;
 }
-void Recipe::setCookingOrder(std::vector<std::string> order) {
-    cooking_order = order;
+void Recipe::setCookingOrder(std::vector<std::string> order){
+    cooking_order.clear();
+    cooking_order.push_back(order);
 }
+
 
 //function
 void Recipe::editIngredient(Ingredient edit_ingredient){
@@ -57,10 +59,12 @@ void Recipe::removeIngredient(std::string ingredient){
     for (int i = 0; i < ingredients.size(); i++) {
         if (ingredients[i].getName() == ingredient) {
             ingredients.erase(ingredients.begin() + i);
-            std::cout<<ingredient<<" has been removed."<<"\n";
+            std::cout<<ingredient<<" has been removed."<<std::endl;
+            
         }
     }
-    std::cout<<"There are no "<<ingredient<<"on the list."<<"\n";
+    std::cout<<"There are no "<<ingredient<<"on the list."<<std::endl;
+ 
 }
 
 void Recipe::addCookingOrder(std::string order){
@@ -69,28 +73,30 @@ void Recipe::addCookingOrder(std::string order){
 void Recipe::deleteCookingOrder(){
     cooking_order.clear();
 }
+
+//수정 요망
 void Recipe::printRecipe(){
-    std::cout << " Recipe Name: " << getRecipeName() << "\n";
-    std::cout << " Cooking Time: " << getTime() << "\n";
+    std::cout << " Recipe Name: " << getRecipeName() << std::endl;
+    std::cout << " Cooking Time: " << getTime() << std::endl;
 
     if (getIngredients().size())
     {
-        std::cout << "\n";
-        std::cout << " [Ingredients List] " << "\n";
+        std::cout << std::endl;
+        std::cout << " [Ingredients List]" << std::endl;
         for (int i = 0; i < getIngredients().size(); i++)
         {
             std::cout << " " << i + 1 << ". " << getIngredients()[i].getName() << "    "
-                << getIngredients()[i].getWeight() << "\n";
+                << getIngredients()[i].getWeight() << std::endl;
         }
     }
 
     if (getCookingOrder().size())
     {
-        std::cout << "\n";
-        std::cout << " <Cooking Order> " << "\n";
+        std::cout << std::endl;
+        std::cout << " <Cooking Order> " << std::endl;
         for (int i = 0; i < getCookingOrder().size(); i++)
         {
-            std::cout << " " << i + 1 << ". " << getCookingOrder()[i] << "\n";
+            std::cout << " " << i + 1 << ". " << getCookingOrder()[i] << std::endl;
         }
 
     }
