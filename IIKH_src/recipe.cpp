@@ -37,11 +37,11 @@ void Recipe::setCookingOrder(std::vector<std::string> order) {
 }
 
 //function
-void Recipe::editIngredient(Ingredient add_ingredient){
+void Recipe::editIngredient(Ingredient edit_ingredient){
     for (int i=0; i<ingredients.size(); i++) {
-        if(ingredients[i].getName()==add_ingredient.getName()) {
-            if(ingredients[i].getWeight() + add_ingredient.getWeight()>0){
-                ingredients[i].setWeight(ingredients[i].getWeight() + add_ingredient.getWeight());
+        if(ingredients[i].getName()==edit_ingredient.getName()) {
+            if(ingredients[i].getWeight() + edit_ingredient.getWeight()>0){
+                ingredients[i].setWeight(ingredients[i].getWeight() + edit_ingredient.getWeight());
                 return;
             }
             else{
@@ -50,7 +50,7 @@ void Recipe::editIngredient(Ingredient add_ingredient){
             }
         }
     }
-    ingredients.push_back(add_ingredient);
+    ingredients.push_back(edit_ingredient);
 }
 
 void Recipe::removeIngredient(std::string ingredient){
