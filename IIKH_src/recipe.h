@@ -31,7 +31,7 @@ class Recipe{
         void setCookingOrder(std::vector<std::string> order);
     
         //function
-        void editIngredient(Ingredient add_ingredient);
+        void editIngredient(Ingredient edit_ingredient);
         void removeIngredient(std::string ingredient);
         void addCookingOrder(std::string order);
         void deleteCookingOrder();
