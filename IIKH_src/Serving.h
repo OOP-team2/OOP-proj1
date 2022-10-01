@@ -5,14 +5,18 @@
 #ifndef OOP_PROJ1_SERVING_H
 #define OOP_PROJ1_SERVING_H
 
+#include "string"
 
 class Serving {
 private:
-    string name;
+    std::string name;
+    int id;
 public:
-    Serving(string serving_name);
-    string getName();
-    void setName(string new_name);
+    Serving(int& new_id, std::string serving_name);
+    int getId();
+    std::string getName();
+    void setName(std::string new_name);
+    bool operator==(Serving otherServing);
 };
 
 

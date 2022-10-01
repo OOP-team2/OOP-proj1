@@ -25,6 +25,8 @@ public:
     void setDay(int new_day);
     std::string getComment();
     void setComment(std::string new_comment);
+
+    bool operator== (Date otherDate);
 };
 
 

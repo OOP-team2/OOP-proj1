@@ -3,6 +3,7 @@
 //
 
 #include "Date.h"
+
 Date::Date() {
     year = 0;
     month = 0;
@@ -46,4 +47,13 @@ std::string Date::getComment() {
 
 void Date::setComment(std::string new_comment) {
     comment = new_comment;
+}
+
+bool Date::operator==(Date otherDate) {
+    if (year == otherDate.getYear() && month == otherDate.getMonth() && day == otherDate.getDay()) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
