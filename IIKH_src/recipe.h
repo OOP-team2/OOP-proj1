@@ -22,7 +22,7 @@ class Recipe{
         std::string getRecipeName();
         int getTime();
         std::vector<Ingredient> getIngredients();
-        std::vector<string> getCookingOrder();
+        std::vector<std::string> getCookingOrder();
             
         //set_recipe(correction)
         void setRecipeName(std::string name);
