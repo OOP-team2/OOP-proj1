@@ -26,11 +26,11 @@ std::vector<std::string> Recipe::getCookingOrder(){
 void Recipe::setRecipeName(std::string name) {
     recipe_name = name;
 }
-void Recipe::setTime(int time) {
-    time = time;
+void Recipe::setTime(int s_time) {
+    time = s_time;
 }
-void Recipe::setIngredients(std::vector<Ingredient> ingredients) {
-    ingredients = ingredients;
+void Recipe::setIngredients(std::vector<Ingredient> s_ingredients) {
+    ingredients = s_ingredients;
 }
 void Recipe::setCookingOrder(std::vector<std::string> order){
     cooking_order = order;
