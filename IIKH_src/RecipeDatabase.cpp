@@ -2,32 +2,34 @@
 #include "RecipeDatabase.h"
 #include <vector>
 #include <string>
+#include <algorithm>
 
-RecipeDatabase::RecipeDatabese(){
+RecipeDatabase::RecipeDatabase(){
     std::vector< std::vector<std::string> > data;
     file_manager = FileManager();
     data = file_manager.load();                                                 // 데이터 불러오기
 
-    for(auto recipe = data.begins(); recipe != data.end(); recipe++){           // DB 초기화
-        recipe_list.push_back(Recipe(recipe));
+    int i = 0;
+    for(auto recipe = data.begin(); recipe != data.end(); recipe){              // DB 초기화
+        recipe_list.push_back(Recipe());                                        // input file 형식이 지정되면 작성
     }
 }
 
-void insertRecipe(Recipe recipe){
+void RecipeDatabase::insertRecipe(Recipe recipe){
     recipe_list.push_back(recipe);
 }
 
-void deleteRecipe(Recipe recipe){
-    for(auto existingRecipe = recipe_list.begins(); existingRecipe != recipe_list.end(); existingRecipe++){
-        if(*existingRecipe == recipe){
-            recipe_list.erase(existingRecipe);
+void RecipeDatabase::deleteRecipe(Recipe recipe){
+    for(int i = 0; i < recipe_list.size(); i++){
+        if(isEqual(recipe_list[i],recipe)){
+            recipe_list.erase(recipe_list.begin() + i);
         }
     }
-}
+} 
 
-void updateRecipe(Recipe recipe){
-    for(auto existingRecipe = recipe_list.begins(); existingRecipe != recipe_list.end(); existingRecipe++){
-        if(*existingRecipe == recipe){
+void RecipeDatabase::updateRecipe(Recipe recipe){
+    for(Recipe existingRecipe : recipe_list){
+        if(isEqual(existingRecipe,recipe)){
             existingRecipe.setRecipeName(recipe.getRecipeName());
             existingRecipe.setTime(recipe.getTime());
             existingRecipe.setIngredients(recipe.getIngredients());
@@ -36,42 +38,53 @@ void updateRecipe(Recipe recipe){
     }
 }
 
-std::vector<Recipe> getRecipes(){
+std::vector<Recipe> RecipeDatabase::getRecipes(){
     return recipe_list;
 }
 
-std::vector<Recipe> searchRecipesByIngredient(std::string ingredient){
+std::vector<Recipe> RecipeDatabase::searchRecipesByIngredient(std::string ingredient){
     std::vector<Recipe> searched_list;
 
-    auto it = find_if(recipe_list.begins() , recipe_list.end(), hasIngredient(it, ingredient));
-    while (it != recipe_list.end()) {
-        searched_list.push_back(it)
-        it = find_if(it+1, recipe_list.end(), hasIngredient(it+1, ingredient));
+    for(Recipe existingRecipe : recipe_list){
+        if(hasIngredient(existingRecipe, ingredient)){
+            searched_list.push_back(existingRecipe);
+        }
     }
 
     return searched_list;
 }
 
-std::vector<Recipe> searchRecipesByRecipeName(std::string recipename){
+std::vector<Recipe> RecipeDatabase::searchRecipesByRecipeName(std::string recipename){
     std::vector<Recipe> searched_list;
 
-    auto it = find_if(recipe_list.begins() , recipe_list.end(), isSameName(it, recipename));
-    while (it != recipe_list.end()) {
-        searched_list.push_back(it)
-        it = find_if(it+1, recipe_list.end(), isSameName(it+1, recipename));
+    for(Recipe existingRecipe : recipe_list){
+        if(isSameName(existingRecipe, recipename)){
+            searched_list.push_back(existingRecipe);
+        }
     }
-
+ 
     return searched_list;
 }
 
-bool isSameName(auto it, std::string recipename){
-    if(it.getRecipeName() == recipename) return true;
+bool RecipeDatabase::isSameName(Recipe existingRecipe, std::string recipename){
+    if(existingRecipe.getRecipeName() == recipename) return true;
     else return false;
 }
 
-bool hasIngredient(auto it, std::string ingredient){
-    for(auto it2 = it.getIngredients().begins(); it2 != it.getIngredients.end(); it2++){
-        if(it2.getName() == ingredient) return true;
+bool RecipeDatabase::hasIngredient(Recipe existingRecipe, std::string ingredient){
+    for(Ingredient ingredients : existingRecipe.getIngredients()){
+        if(ingredients.getName() == ingredient) return true;
     }
     return false;
+}
+
+bool RecipeDatabase::isEqual(Recipe r1, Recipe r2){
+    if(r1.getRecipeName() == r2.getRecipeName() 
+        && r1.getCookingOrder() == r2.getCookingOrder()
+        && r1.getIngredients() == r2.getIngredients()
+        && r1.getTime() == r2.getTime())
+        return true;
+
+    else
+        return false;
 }

@@ -4,7 +4,7 @@
 #include<string>
 #include<vector>
 #include<iostream>
-#include "RecipeDatabase.h"
+#include "Ingredient.h"
 
 
 class Recipe{
