@@ -66,25 +66,23 @@ std::vector<Recipe> RecipeDatabase::searchRecipesByRecipeName(std::string recipe
     return searched_list;
 }
 
-bool RecipeDatabase::isSameName(Recipe existingRecipe, std::string recipename){
-    if(existingRecipe.getRecipeName() == recipename) return true;
+bool isSameName(Recipe existingRecipe, std::string recipename){
+    if(existingRecipe.getRecipeName().compare(recipename)) return true;
     else return false;
 }
 
-bool RecipeDatabase::hasIngredient(Recipe existingRecipe, std::string ingredient){
+bool hasIngredient(Recipe existingRecipe, std::string ingredient){
     for(Ingredient ingredients : existingRecipe.getIngredients()){
-        if(ingredients.getName() == ingredient) return true;
+        if(ingredients.getName().compare(ingredient)) return true;
     }
     return false;
 }
 
-bool RecipeDatabase::isEqual(Recipe r1, Recipe r2){
-    if(r1.getRecipeName() == r2.getRecipeName() 
-        && r1.getCookingOrder() == r2.getCookingOrder()
-        && r1.getIngredients() == r2.getIngredients()
-        && r1.getTime() == r2.getTime())
-        return true;
+bool isEqual(Recipe r1, Recipe r2){
+    return true;
+    // if(r1.getId() == r2.getId())
+    //     return true;
 
-    else
-        return false;
+    // else
+    //     return false;
 }

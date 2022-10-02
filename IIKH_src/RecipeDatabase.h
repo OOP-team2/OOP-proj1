@@ -9,9 +9,9 @@ class RecipeDatabase{
     private:
         FileManager file_manager;
         std::vector<Recipe> recipe_list;
-        bool RecipeDatabase::isSameName(Recipe existingRecipe, std::string recipename);
-        bool RecipeDatabase::hasIngredient(Recipe existingRecipe, std::string ingredient);
-        bool RecipeDatabase::isEqual(Recipe r1, Recipe r2);
+        bool isSameName(Recipe existingRecipe, std::string recipename);
+        bool hasIngredient(Recipe existingRecipe, std::string ingredient);
+        bool isEqual(Recipe r1, Recipe r2);
     
     public:
         RecipeDatabase();
