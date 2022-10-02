@@ -14,7 +14,7 @@ FileManager::FileManager(){
 }
 
 // line을 받아 구분자를 기준으로 구분하여 vector로 반환하는 메소드
-vector<string> split(string str, char Delimiter) {
+vector<string> FileManager::split(string str, char Delimiter) {
     istringstream iss(str);
     string buffer;
  
@@ -28,13 +28,13 @@ vector<string> split(string str, char Delimiter) {
 }
 
 // 파일을 읽어서 파일의 내용을 2차원 문자열 리스트에 저장하는 함수
-std::vector<std::vector< std::string> > FileManager::load(){
-    std::ifstream ifs;
+vector< vector<string> > FileManager::load(){
+    ifstream ifs;
     ifs.open(this->file_name);
-    std::vector<std::vector< std::string> > data;
+    vector<vector<string> > data;
     if (ifs.fail())                                 // 파일이 없으면 에러 출력
 	{
-		std::cerr << "Error!" << std::endl;
+		cerr << "Error!" << endl;
 		return data;
 	}
 
