@@ -5,6 +5,8 @@
 #include "Plan.h"
 #include "Date.h"
 #include "Meal.h"
+#include <iostream>
+using namespace std;
 
 Plan::Plan(Meal new_menu, MealType new_meal_type, Date new_date) {
     menu = new_menu;
@@ -17,10 +19,12 @@ Date Plan::getDate() {
 }
 
 Meal Plan::getMeal() {
+
     return  menu;
 }
 
 MealType Plan::getMealType() {
+
     return meal_type;
 }
 
@@ -37,7 +41,27 @@ void Plan::setMeal(Meal new_menu) {
 }
 
 void Plan::showPlan() {
-    return;
+    int year, month, day;
+    string comment;
+
+    year = date.getYear();
+    month = date.getMonth();
+    day = date.getDay();
+    comment = date.getComment();
+
+    cout << "------------------------------------------------"<< endl;
+	cout <<  year << " / " << month << " / " << day << " / " << meal_type << endl;
+	cout << "Comment : " << comment << endl;	
+
+	cout << endl << "-menu-" <<  endl;
+
+	vector<Serving> servings = menu.getServings();
+	for (int i = 0; i < servings.size(); i++) {
+		std::cout << "Menu Name:	" << servings[i].getName() << endl;
+		std::cout << "Num of People:	" << servings[i].getId() << endl;
+	}
+	cout << endl;
+	return;
 }
 
 bool Plan::operator==(Plan otherPlan) {
