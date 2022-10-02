@@ -11,6 +11,7 @@ class Recipe{
     private:
         std::string recipe_name;
         int time;
+        int id;
         std::vector<Ingredient> ingredients;
         std::vector<std::string> cooking_order;
     
