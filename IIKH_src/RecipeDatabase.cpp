@@ -28,9 +28,10 @@ void deleteRecipe(Recipe recipe){
 void updateRecipe(Recipe recipe){
     for(auto existingRecipe = recipe_list.begins(); existingRecipe != recipe_list.end(); existingRecipe++){
         if(*existingRecipe == recipe){
-            existingRecipe.setName(recipe.getName());
-            existingRecipe.setIngredient(recipe.getIngredient());
-            existingRecipe.setOrder(recipe.getOrder());
+            existingRecipe.setRecipeName(recipe.getRecipeName());
+            existingRecipe.setTime(recipe.getTime());
+            existingRecipe.setIngredients(recipe.getIngredients());
+            existingRecipe.setCookingOrder(recipe.getCookingOrder());
         }
     }
 }
@@ -42,7 +43,7 @@ std::vector<Recipe> getRecipes(){
 std::vector<Recipe> searchRecipesByIngredient(std::string ingredient){
     std::vector<Recipe> searched_list;
 
-    auto it = find_if(recipe_list.begin() , recipe_list.end(), hasIngredient(it, ingredient));
+    auto it = find_if(recipe_list.begins() , recipe_list.end(), hasIngredient(it, ingredient));
     while (it != recipe_list.end()) {
         searched_list.push_back(it)
         it = find_if(it+1, recipe_list.end(), hasIngredient(it+1, ingredient));
@@ -54,7 +55,7 @@ std::vector<Recipe> searchRecipesByIngredient(std::string ingredient){
 std::vector<Recipe> searchRecipesByRecipeName(std::string recipename){
     std::vector<Recipe> searched_list;
 
-    auto it = find_if(recipe_list.begin() , recipe_list.end(), isSameName(it, recipename));
+    auto it = find_if(recipe_list.begins() , recipe_list.end(), isSameName(it, recipename));
     while (it != recipe_list.end()) {
         searched_list.push_back(it)
         it = find_if(it+1, recipe_list.end(), isSameName(it+1, recipename));
@@ -64,11 +65,13 @@ std::vector<Recipe> searchRecipesByRecipeName(std::string recipename){
 }
 
 bool isSameName(auto it, std::string recipename){
-    if(it.getName() == recipename) return true;
+    if(it.getRecipeName() == recipename) return true;
     else return false;
 }
 
 bool hasIngredient(auto it, std::string ingredient){
-    if(it.getIngredients().getName() == ingredient) return true;
-    else return false;
+    for(auto it2 = it.getIngredients().begins(); it2 != it.getIngredients.end(); it2++){
+        if(it2.getName() == ingredient) return true;
+    }
+    return false;
 }
