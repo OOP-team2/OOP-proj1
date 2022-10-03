@@ -7,7 +7,7 @@
 
 class RecipeDatabase{
     private:
-        FileManager file_manager;
+        FileManager file_manager;                                                   // file input object
         std::vector<Recipe> recipe_list;
         bool isSameName(Recipe existingRecipe, std::string recipename);
         bool hasIngredient(Recipe existingRecipe, std::string ingredient);
@@ -15,6 +15,7 @@ class RecipeDatabase{
     
     public:
         RecipeDatabase();
+        void showAllRecipes();
         void insertRecipe(Recipe recipe);
         void deleteRecipe(Recipe recipe);
         void updateRecipe(Recipe recipe);

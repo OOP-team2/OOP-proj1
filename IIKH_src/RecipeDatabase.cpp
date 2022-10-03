@@ -7,11 +7,17 @@
 RecipeDatabase::RecipeDatabase(){
     std::vector< std::vector<std::string> > data;
     file_manager = FileManager();
-    data = file_manager.load();                                                 // 데이터 불러오기
+    data = file_manager.load();
 
     int i = 0;
-    for(auto recipe = data.begin(); recipe != data.end(); recipe){              // DB 초기화
-        recipe_list.push_back(Recipe());                                        // input file 형식이 지정되면 작성
+    for(auto recipe = data.begin(); recipe != data.end(); recipe){
+        recipe_list.push_back(Recipe());
+    }
+}
+
+void RecipeDatabase::showAllRecipes(){
+    for(int i = 0; i < recipe_list.size(); i++){
+        std::cout<<to_string(i)<<". "<<recipe_list[i].getRecipeName()<<std::endl;
     }
 }
 
@@ -82,7 +88,6 @@ bool isEqual(Recipe r1, Recipe r2){
     return true;
     // if(r1.getId() == r2.getId())
     //     return true;
-
     // else
     //     return false;
 }
