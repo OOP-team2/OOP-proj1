@@ -4,19 +4,25 @@
 #include<iostream>
 #include<string>
 #include<vector>
-class InputManager{
+class InputManager {
 
-    public:
+public:
 
-        //send recipe_DB
-        void recipeInput();
-        void recipeInput(std::vector<std::string> recipe_info);
-        void recipeNumInput();
-        void recipeNameInput();
-        void recipeIngredientInput(); 
+    //send recipe_DB
+    void recipeInput();
+    void recipeInput(std::vector<std::string> recipe_info);
+    void recipeNumInput();
+    void recipeNameInput();
+    void recipeIngredientInput();
 
-        //send plan_DB
-        
+    //send plan_DB
+    void planInput();
+    void planInput(std::vector<std::string> plan_info);
+    void planNumInput();
+    void planNameInput();
+
+
+
 };
 
 #endif
