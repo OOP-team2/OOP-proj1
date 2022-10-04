@@ -1,4 +1,4 @@
-#include "recipe.h"
+#include "Recipe.h"
 
 Recipe::Recipe(int new_ID,std::string new_recipe_name,int new_prepare_time,std::vector<Ingredient> new_ingredients, std::vector<std::string> new_cooking_order){
     ID = new_ID;
