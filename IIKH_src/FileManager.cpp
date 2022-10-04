@@ -31,7 +31,7 @@ vector<string> FileManager::split(string str, char Delimiter) {
 vector< vector<string> > FileManager::load(){
     ifstream ifs;
     ifs.open(this->file_name);
-    vector<vector<string> > data;
+    vector< vector<string> > data;
     if (ifs.fail())                                 // 파일이 없으면 에러 출력
 	{
 		cerr << "Error!" << endl;
