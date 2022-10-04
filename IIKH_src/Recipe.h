@@ -9,24 +9,26 @@
 
 class Recipe{
     private:
+        int ID;
         std::string recipe_name;
-        int time;
+        int prepare_time;
         std::vector<Ingredient> ingredients;
         std::vector<std::string> cooking_order;
     
     public:
         Recipe();
-        Recipe(std::string new_recipe_name,int new_time,std::vector<Ingredient> new_ingredients, std::vector<std::string> new_cooking_order);
+        Recipe(int new_ID,std::string new_recipe_name,int new_prepare_time,std::vector<Ingredient> new_ingredients, std::vector<std::string> new_cooking_order);
     
-        //get_information
+        //get_recipe_information
+        int getID();
         std::string getRecipeName();
-        int getTime();
+        int getPrepareTime();
         std::vector<Ingredient> getIngredients();
         std::vector<std::string> getCookingOrder();
             
-        //set_recipe(correction)
+        //set_recipe_information
         void setRecipeName(std::string name);
-        void setTime(int s_time);
+        void setPrepareTime(int s_time);
         void setIngredients(std::vector<Ingredient> s_ingredients);
         void setCookingOrder(std::vector<std::string> order);
     
