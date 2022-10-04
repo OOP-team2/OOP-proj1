@@ -9,7 +9,7 @@ Recipe::Recipe(int new_ID,std::string new_recipe_name,int new_prepare_time,std::
 }
 
 //getdata
-int getID(){
+int Recipe::getID(){
     return ID;
 }
 std::string Recipe::getRecipeName(){
