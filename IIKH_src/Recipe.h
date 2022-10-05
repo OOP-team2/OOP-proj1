@@ -6,7 +6,6 @@
 #include<iostream>
 #include "Ingredient.h"
 
-
 class Recipe{
     private:
         int ID;
