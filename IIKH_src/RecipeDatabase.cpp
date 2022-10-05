@@ -1,5 +1,6 @@
 //RecipeDB
 #include "RecipeDatabase.h"
+#include "Parser.h"
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -9,20 +10,16 @@
     : Load recipes from FileManager and push to runtime database
 */
 RecipeDatabase::RecipeDatabase(){
-    std::vector< std::vector<std::string> > data;
-    file_manager = FileManager();
-    data = file_manager.load();
+    // std::vector< std::vector<std::string> > data;
+    file_manager = FileManager("DB_Recipe.txt");
+    data = file_manager.loadRecipeDB();
 
-    int i = 0;
-    for(auto recipe = data.begin(); recipe != data.end(); recipe){
-        recipe_list.push_back(Recipe());
-    }
-}
-
-// Print whole recipes in DB to console
-void RecipeDatabase::showAllRecipes(){
-    for(int i = 0; i < recipe_list.size(); i++){
-        std::cout<<to_string(i)<<". "<<recipe_list[i].getRecipeName()<<std::endl;
+    std::vector<std::string> ingredients;
+    std::vector<std::string> cooking_order; 
+    for(std::vector <std::string> recipe : data){
+        ingredients = Parser().split(recipe[3],',');
+        cooking_order = Parser().split(recipe[4], ',');
+        recipe_list.push_back(Recipe(stoi(recipe[0]), recipe[1], stoi(recipe[2]), ingredients, cooking_order));
     }
 }
 
@@ -45,7 +42,7 @@ void RecipeDatabase::updateRecipe(Recipe recipe){
     for(Recipe existingRecipe : recipe_list){
         if(isEqual(existingRecipe,recipe)){
             existingRecipe.setRecipeName(recipe.getRecipeName());
-            existingRecipe.setTime(recipe.getTime());
+            existingRecipe.setPrepareTime(recipe.getPrepareTime());
             existingRecipe.setIngredients(recipe.getIngredients());
             existingRecipe.setCookingOrder(recipe.getCookingOrder());
         }
@@ -90,13 +87,13 @@ std::vector<Recipe> RecipeDatabase::getRecipes(){
 */
 
 // Compare name of two recipes
-bool isSameName(Recipe existingRecipe, std::string recipename){
+bool RecipeDatabase::isSameName(Recipe existingRecipe, std::string recipename){
     if(existingRecipe.getRecipeName().compare(recipename)) return true;
     else return false;
 }
 
 // Check if the recipe has the ingredient
-bool hasIngredient(Recipe existingRecipe, std::string ingredient){
+bool RecipeDatabase::hasIngredient(Recipe existingRecipe, std::string ingredient){
     for(Ingredient ingredients : existingRecipe.getIngredients()){
         if(ingredients.getName().compare(ingredient)) return true;
     }
@@ -104,10 +101,60 @@ bool hasIngredient(Recipe existingRecipe, std::string ingredient){
 }
 
 // Compare two recipes to see if they are the same
-bool isEqual(Recipe r1, Recipe r2){
-    return true;
-    // if(r1.getId() == r2.getId())
-    //     return true;
-    // else
-    //     return false;
+bool RecipeDatabase::isEqual(Recipe r1, Recipe r2){
+    if(r1.getID() == r2.getID())
+        return true;
+    else
+        return false;
+}
+
+
+/*
+    UI function
+*/
+
+// Print whole recipes in DB to console
+void RecipeDatabase::showAllRecipes(){
+    for(int i = 0; i < recipe_list.size(); i++){
+        std::cout<<i<<". "<<recipe_list[i].getRecipeName()<<std::endl;
+    }
+}
+
+Recipe RecipeDatabase::recipeInputUI() {
+    int id, prepare_time;
+    std::string input, name;
+    std::vector<std::string> ingredients, order;
+
+    //get recipe_name
+    std::cout << "\n";
+    std::cout << "Recipe Name: ";
+    std::cin >> name;
+
+    //get ingredient_Information
+    std::cout << "\n";
+    std::cout << "(If you want to stop add_ingredient, please enter \"stop\")";
+    while (input != "stop") {
+        int i = 1;
+        std::cout << "[" << i++ << "]" << " Ingredient & Weight: ";
+        std::cin >> input;
+        ingredients.push_back(input);
+    }
+    input = "";
+
+    //get preparation_time
+    std::cout << "\n";
+    std::cout << "Prepare Time(minutes): ";
+    std::cin >> prepare_time;
+
+    //get cooking order
+    std::cout << "\n";
+    std::cout << "(If you want to stop add_ingredient, please enter \"stop\")";
+    while (input != "stop") {
+        int i = 1;
+        std::cout << "[" << i++ << "]" << " Order: ";
+        std::cin >> input;
+        order.push_back(input);
+    }
+    
+    return Recipe(id, name, prepare_time, ingredients, order); 
 }

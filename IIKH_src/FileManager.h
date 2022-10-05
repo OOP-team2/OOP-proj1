@@ -7,12 +7,12 @@
 class FileManager{
     private:
         std::string file_name;
-        std::vector<std::string> split(std::string str, char Delimiter);
     
     public:
         FileManager();
-        std::vector<std::vector< std::string> > load();
-        void write(std::string recipes);
+        FileManager(std::string file_name);
+        std::vector<std::vector< std::string> > loadRecipeDB();
+        void writeRecipeDB(std::string recipes);
 };
 
 #endif
