@@ -2,19 +2,18 @@
 // Created by HoJoonEum on 2022/09/27.
 //
 
+#include "iostream"
 #include "Date.h"
 
 Date::Date() {
     year = 0;
     month = 0;
     day = 0;
-    comment = "";
 }
-Date::Date(int new_year, int new_month, int new_day, std::string new_comment) {
+Date::Date(int new_year, int new_month, int new_day) {
     year = new_year;
     month = new_month;
     day = new_day;
-    comment = new_comment;
 }
 
 int Date::getYear() {
@@ -41,19 +40,26 @@ void Date::setDay(int new_day) {
     day = new_day;
 }
 
-std::string Date::getComment() {
-    return comment;
+// function for show date info
+void Date::showInfo() {
+    std::cout << "This date info: " << year << month << day << '\n';
+    std::cout << std::endl;
 }
 
-void Date::setComment(std::string new_comment) {
-    comment = new_comment;
-}
-
-bool Date::operator==(Date otherDate) {
-    if (year == otherDate.getYear() && month == otherDate.getMonth() && day == otherDate.getDay()) {
+bool Date::operator==(Date other_date) {
+    if (year == other_date.getYear() && month == other_date.getMonth() && day == other_date.getDay()) {
         return true;
     }
     else {
         return false;
     }
+}
+
+bool Date::operator<(Date other_date) {
+    if (year < other_date.getYear()) return true;
+    if (year > other_date.getYear()) return false;
+    if (month < other_date.getMonth()) return true;
+    if (month > other_date.getMonth()) return false;
+    if (day < other_date.getDay()) return true;
+    else return false;
 }
