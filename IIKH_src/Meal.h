@@ -5,28 +5,34 @@
 #ifndef OOP_PROJ1_MEAL_H
 #define OOP_PROJ1_MEAL_H
 
-#include <vector>
-#include "Serving.h"
+#include "set"
+#include "Recipe.h"
+#include "RecipeDatabase.h"
 
-enum MealType { breakfast, launch, dinner };
+enum MealType { Breakfast, Launch, Dinner, None };
 
 class Meal {
 private:
-    std::vector<Serving> servings;
+    MealType mealtype = None;
     int people = 0;
-    int id;
+    std::set<Recipe> recipes;
 public:
+    static RecipeDatabase* recipeDB;
     Meal();
-    Meal(int& new_id);
-    int getId();
-    void addServing(Serving serving);
-    void setPeople(int new_people);
+    Meal(MealType new_mealtype, int people);
+    MealType getMealType();
+    void setMealType(MealType new_mealtype);
     int getPeople();
-    void deleteServing(Serving serving_to_delete);
-    void showServings();
-    std::vector<Serving> getServings();
-    bool operator== (Meal otherMeal);
+    void setPeople(int new_people);
+    std::set<Recipe> getRecipes();
+    void addRecipe(Recipe Recipe);
+    void deleteRecipe(Recipe Recipe_to_delete);
+    void showRecipes();
+    bool operator==(Meal other_meal);
+    bool operator< (Meal other_meal);
 };
+
+RecipeDatabase* recipeDB = RecipeDatabase().getInstance();
 
 
 #endif //OOP_PROJ1_MEAL_H
