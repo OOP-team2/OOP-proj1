@@ -2,8 +2,8 @@
 #include <memory>
 
 Greeter::Greeter() {
-	recipedb = make_unique<RecipeDatabase>();
-	planmanager = make_unique <PlanManager>();
+	RecipeDatabase recipedb;
+	PlanManager planmanager;
 	string temp_string;
 	int temp_num;
 }
@@ -42,8 +42,9 @@ void Greeter::showMenu(){
 				cout << "[1] Add Recipe" << endl;
 				cout << "[2] Delete Recipe" << endl;
 				cout << "[3] Revise Recipe" << endl;
-				cout << "[4] Search Recipe" << endl;
-				cout << "[5] Show All Recipe" << endl;
+				cout << "[4] Search Recipe by Ingredient" << endl;
+				cout << "[5] Search Recipe by Recipe Name" << endl;
+				cout << "[6] Show All Recipe" << endl;
 				cout << "[0] Back To Menu" << endl;
 
 				cout << "\nSelect : " << flush;
@@ -56,7 +57,7 @@ void Greeter::showMenu(){
 				}
 				else if (input_num_in_recipe == 1) {
 					system("clear");
-					addRecipe();
+					insertRecipe();
 					cin.ignore();
 					continue;
 				}
@@ -75,11 +76,17 @@ void Greeter::showMenu(){
 				}
 				else if (input_num_in_recipe == 4) {
 					system("clear");
-					searchRecipe();
+					searchRecipesByIngredient();
 					cin.ignore();
 					continue;
 				}
-				else if (input_num_in_recipe == 5) {
+				else if (input_num_in_recipe == 5){
+					system("clear");
+					searchRecipesByRecipeName();
+					cin.ignore();
+					continue;
+				}
+				else if (input_num_in_recipe == 6) {
 					system("clear");
 					showAllRecipe();
 					cin.ignore();
@@ -105,9 +112,7 @@ void Greeter::showMenu(){
 				cout << "---------" << endl;
 				cout << "[1] Add Plan" << endl;
 				cout << "[2] Delete Plan" << endl;
-				//cout << "[3] Revise Plan" << endl;
-				cout << "[3] Search Plan" << endl;
-				cout << "[4] Show All Plan" << endl;
+				cout << "[3] Show All Plan" << endl;
 				cout << "[0] Back To Menu" << endl;
 				int input_num_in_plan;
 				cin >> input_num_in_plan;
@@ -118,8 +123,7 @@ void Greeter::showMenu(){
 				}
 				else if (input_num_in_plan == 1) {
 					system("clear");
-					Plan *new_plan;
-					addPlan(new_plan);
+					addPlan();
 					cout << endl << "Complete. Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
@@ -133,14 +137,7 @@ void Greeter::showMenu(){
 				}
 				else if (input_num_in_plan == 3) {
 					system("clear");
-					searchPlan();
-					cout <<endl<< "Enter any key to go back" << endl;
-					cin.ignore(); 	cin.clear();
-					if (getchar())continue;
-				}
-				else if (input_num_in_plan == 4) {
-					system("clear");
-					showPlan();
+					showAllPlan();
 					cout << endl << "Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
