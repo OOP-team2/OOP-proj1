@@ -39,10 +39,19 @@ vector< vector<string> > FileManager::loadRecipeDB(){
     return data;
 }
 
-// 미구현
-// recipe객체를 받을건지 아니면 파일에 쓰려는 내용만 받을건지?
-void FileManager::writeRecipeDB(std::string recipe){
+void FileManager::writeRecipeDB(std::vector<std::vector<std::string>> data){
+    std::string line = "";
     std::ofstream ofs;
-    ofs.open(this->file_name);
+    ofs.open(this->file_name, std::ios::trunc);
+
+    for(int i = 0; i < data.size(); i++){
+        for(int j = 0; j < data[i].size(); j++){
+            line += data[i][j];
+            line += "/";
+        }
+        ofs << line;
+        line = "";
+    }
+
     ofs.close();
 }

@@ -3,7 +3,6 @@
 #include "Parser.h"
 #include <vector>
 #include <string>
-#include <algorithm>
 
 /*
     Constructor
@@ -19,39 +18,57 @@ RecipeDatabase::RecipeDatabase(){
     for(std::vector <std::string> recipe : data){
         ingredients = Parser().split(recipe[3],',');
         cooking_order = Parser().split(recipe[4], ',');
-        recipe_list.push_back(Recipe(stoi(recipe[0]), recipe[1], stoi(recipe[2]), ingredients, cooking_order));
+        recipe_list.push_back(Recipe(stoi(recipe[0]), recipe[1], stoi(recipe[2]), ingredients, cooking_order));     // recipe생성자 수정예정
     }
 }
 
 // Add new recipe to database
-void RecipeDatabase::insertRecipe(Recipe recipe){
+void RecipeDatabase::insertRecipe(){
+    Recipe recipe = recipeInputUI();
+    
     recipe_list.push_back(recipe);
+    updatedata();
+    file_manager.writeRecipeDB(data);
+    return;
 }
 
 // Delete selected recipe from database
-void RecipeDatabase::deleteRecipe(Recipe recipe){
-    for(int i = 0; i < recipe_list.size(); i++){
-        if(isEqual(recipe_list[i],recipe)){
-            recipe_list.erase(recipe_list.begin() + i);
-        }
-    }
+void RecipeDatabase::deleteRecipe(){
+    std::cout << "Select Recipe you want to delete" << std::endl;
+    showAllRecipes();
+    int num = recipeNumInputUI();
+
+    recipe_list.erase(recipe_list.begin() + (num-1));
+    updatedata();
+    file_manager.writeRecipeDB(data);
+    return;
 } 
 
 // Update selected recipe
-void RecipeDatabase::updateRecipe(Recipe recipe){
-    for(Recipe existingRecipe : recipe_list){
-        if(isEqual(existingRecipe,recipe)){
-            existingRecipe.setRecipeName(recipe.getRecipeName());
-            existingRecipe.setPrepareTime(recipe.getPrepareTime());
-            existingRecipe.setIngredients(recipe.getIngredients());
-            existingRecipe.setCookingOrder(recipe.getCookingOrder());
-        }
-    }
+void RecipeDatabase::updateRecipe(){
+    Recipe recipe;
+    
+    std::cout << "Select Recipe you want to update" << std::endl;
+    showAllRecipes();
+    int num = recipeNumInputUI();
+    
+    recipe = recipe_list[num-1];
+    Recipe new_recipe = recipeInputUI(recipe);
+
+    recipe.setRecipeName(new_recipe.getRecipeName());
+    recipe.setPrepareTime(new_recipe.getPrepareTime());
+    recipe.setIngredients(new_recipe.getIngredients());
+    recipe.setCookingOrder(new_recipe.getCookingOrder());
+
+    updatedata();
+    file_manager.writeRecipeDB(data);
+    return;
 }
 
 // Search recipe by name
-std::vector<Recipe> RecipeDatabase::searchRecipesByIngredient(std::string ingredient){
+std::vector<Recipe> RecipeDatabase::searchRecipesByIngredient(){
     std::vector<Recipe> searched_list;
+    std::string ingredient = recipeIngredientInputUI();
 
     for(Recipe existingRecipe : recipe_list){
         if(hasIngredient(existingRecipe, ingredient)){
@@ -59,18 +76,25 @@ std::vector<Recipe> RecipeDatabase::searchRecipesByIngredient(std::string ingred
         }
     }
 
+    for(Recipe recipe : searched_list)
+        recipe.printRecipe();
+
     return searched_list;
 }
 
 // Search recipe by ingredient
-std::vector<Recipe> RecipeDatabase::searchRecipesByRecipeName(std::string recipename){
+std::vector<Recipe> RecipeDatabase::searchRecipesByRecipeName(){
     std::vector<Recipe> searched_list;
+    std::string recipename = recipeIngredientInputUI();
 
     for(Recipe existingRecipe : recipe_list){
         if(isSameName(existingRecipe, recipename)){
             searched_list.push_back(existingRecipe);
         }
     }
+
+    for(Recipe recipe : searched_list)
+        recipe.printRecipe();
  
     return searched_list;
 }
@@ -109,6 +133,34 @@ bool RecipeDatabase::isEqual(Recipe r1, Recipe r2){
 }
 
 
+void RecipeDatabase::updatedata(){
+    std::string ingredients = "";
+    std::string cooking_order;
+    std::vector<std::string> recipe_string;
+
+    data.clear();
+
+    for(Recipe recipe : recipe_list){
+        for(int i = 0; i < recipe.getIngredients().size(); i++){
+            ingredients += recipe.getIngredients()[i].getName();
+            ingredients += ", ";
+        }
+        for(int i = 0; i < recipe.getCookingOrder().size(); i++){
+            cooking_order += recipe.getCookingOrder()[i];
+            cooking_order += ", ";
+        }
+        recipe_string.push_back(to_string(recipe.getID()));
+        recipe_string.push_back(recipe.getRecipeName());
+        recipe_string.push_back(to_string(recipe.getPrepareTime()));
+        recipe_string.push_back(ingredients);
+        recipe_string.push_back(cooking_order);
+
+        data.push_back(recipe_string);
+    }
+
+    return;
+}
+
 /*
     UI function
 */
@@ -116,7 +168,7 @@ bool RecipeDatabase::isEqual(Recipe r1, Recipe r2){
 // Print whole recipes in DB to console
 void RecipeDatabase::showAllRecipes(){
     for(int i = 0; i < recipe_list.size(); i++){
-        std::cout<<i<<". "<<recipe_list[i].getRecipeName()<<std::endl;
+        std::cout<<i+1<<". "<<recipe_list[i].getRecipeName()<<std::endl;
     }
 }
 
@@ -132,9 +184,9 @@ Recipe RecipeDatabase::recipeInputUI() {
 
     //get ingredient_Information
     std::cout << "\n";
-    std::cout << "(If you want to stop add_ingredient, please enter \"stop\")";
+    std::cout << "(If you want to stop add_ingredient, please enter \"stop\")" << std::endl;
+    int i = 1;
     while (input != "stop") {
-        int i = 1;
         std::cout << "[" << i++ << "]" << " Ingredient & Weight: ";
         std::cin >> input;
         ingredients.push_back(input);
@@ -148,13 +200,104 @@ Recipe RecipeDatabase::recipeInputUI() {
 
     //get cooking order
     std::cout << "\n";
-    std::cout << "(If you want to stop add_ingredient, please enter \"stop\")";
+    std::cout << "(If you want to stop add_order, please enter \"stop\")" << std::endl;
+    i = 1;
     while (input != "stop") {
-        int i = 1;
         std::cout << "[" << i++ << "]" << " Order: ";
         std::cin >> input;
         order.push_back(input);
     }
     
     return Recipe(id, name, prepare_time, ingredients, order); 
+}
+
+Recipe RecipeDatabase::recipeInputUI(Recipe recipe) {
+    int id, prepare_time;
+    std::string input, name;
+    std::vector<std::string> ingredients, order;
+
+    //get recipe_name
+    std::cout << "\n";
+    std::cout << "Recipe Name: " << recipe.getRecipeName() << "-->";
+    std::getline(std::cin, name);
+
+    if(name.compare("\n")) 
+        name = recipe.getRecipeName();
+
+    //get ingredient_Information
+    std::cout << "\n";
+    std::cout << "(If you want to stop add_ingredient, please enter \"stop\")" << std::endl;
+
+    int i = 1;
+    while (input != "stop") {
+        if(i-1 < recipe.getIngredients().size()){
+            std::cout << "[" << i << "]" << " Ingredient & Weight: " << recipe.getIngredients()[i-1].getName() << "-->";
+            std::getline(std::cin, input);
+            if(name.compare("\n")) 
+                input = recipe.getIngredients()[i-1].getName();
+        }
+        else{
+            std::cout << "[" << i << "]" << " Ingredient & Weight: ";
+            std::cin >> input;
+        }  
+        ingredients.push_back(input);
+        i++;
+    }
+    input = "";
+
+    //get preparation_time
+    std::cout << "\n";
+    std::cout << "Prepare Time(minutes): ";
+    std::cin >> prepare_time;
+
+    //get cooking order
+    std::cout << "\n";
+    std::cout << "(If you want to stop add_order, please enter \"stop\")" << std::endl;
+    i = 1;
+    while (input != "stop") {
+        if(i-1 < recipe.getCookingOrder().size()){
+            std::cout << "[" << i << "]" << " Order: " << recipe.getCookingOrder()[i-1] << "-->";
+            std::getline(std::cin, input);
+            if(name.compare("\n")) 
+                input = recipe.getCookingOrder()[i-1];
+        }
+        else{
+            std::cout << "[" << i++ << "]" << " Order: ";
+            std::cin >> input;
+        }  
+        order.push_back(input);
+        i++;
+    }
+    
+    return Recipe(id, name, prepare_time, ingredients, order); 
+}
+
+int RecipeDatabase::recipeNumInputUI() {
+    int number;
+
+    std::cout << "\n";
+    std::cout << "Input Recipe Number: ";
+    std::cin >> number;
+
+    return number;
+}
+
+std::string RecipeDatabase::recipeNameInputUI() {
+    std::string s_recipeName;
+    
+    std::cout << "\n";
+    std::cout << "Input Recipe Name: ";
+    std::cin >> s_recipeName;
+
+    return s_recipeName;
+}
+
+std::string RecipeDatabase::recipeIngredientInputUI() {
+    std::string s_Ingredient;
+    
+    std::cout << "\n";
+    std::cout << "Input Recipe Ingredient: ";
+    std::cin >> s_Ingredient;
+
+    return s_Ingredient;
 }

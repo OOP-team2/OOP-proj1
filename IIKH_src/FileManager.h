@@ -12,7 +12,7 @@ class FileManager{
         FileManager();
         FileManager(std::string file_name);
         std::vector<std::vector< std::string> > loadRecipeDB();
-        void writeRecipeDB(std::string recipes);
+        void writeRecipeDB(std::vector<std::vector<std::string>> data);
 };
 
 #endif
