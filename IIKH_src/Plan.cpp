@@ -42,23 +42,20 @@ void Plan::setMeal(Meal new_menu) {
 
 void Plan::showPlan() {
     int year, month, day;
-    string comment;
 
-    year = date.getYear();
-    month = date.getMonth();
-    day = date.getDay();
-    comment = date.getComment();
+    year = date.getYear(); /*연도 저장 */
+    month = date.getMonth(); /*월 저장 */
+    day = date.getDay(); /*일 저장 */
 
+    /* date 출력 */
     cout << "------------------------------------------------"<< endl;
 	cout <<  year << " / " << month << " / " << day << " / " << meal_type << endl;
-	cout << "Comment : " << comment << endl;	
-
 	cout << endl << "-menu-" <<  endl;
 
-	vector<Serving> servings = menu.getServings();
+	vector<Serving> servings = menu.getServings(); /*벡터에 메뉴들을 저장이후 반복문으로 메뉴를 하나씩 출력. */
 	for (int i = 0; i < servings.size(); i++) {
 		std::cout << "Menu Name:	" << servings[i].getName() << endl;
-		std::cout << "Num of People:	" << servings[i].getId() << endl;
+		std::cout << "       ID:	" << servings[i].getId() << endl; /* 인분도 출력 */
 	}
 	cout << endl;
 	return;
