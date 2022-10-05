@@ -21,9 +21,9 @@ public:
 	vector<Recipe> searchRecipesByIngredient();
 	vector<Recipe> searchRecipesByRecipeName();
 	void addPlan();
-    void deletePlan();
-    void reviseMeal();
-    void reviseMealType();
-    void reviseDate();
-    void showAllPlan();
+    	void deletePlan();
+    	void reviseMeal();
+    	void reviseMealType();
+    	void reviseDate();
+    	void showAllPlan();
 };
