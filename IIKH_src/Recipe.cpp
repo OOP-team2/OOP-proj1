@@ -45,8 +45,8 @@ void Recipe::setCookingOrder(std::vector<std::string> order){
 void Recipe::editIngredient(Ingredient edit_ingredient){
     for (int i=0; i<ingredients.size(); i++) {
         if(ingredients[i].getName()==edit_ingredient.getName()) {
-            if((ingredients[i].getWeight() + edit_ingredient.getWeight())>0){
-                ingredients[i].setWeight(ingredients[i].getWeight() + edit_ingredient.getWeight());
+            if(stoi(ingredients[i].getWeight()) + stoi(edit_ingredient.getWeight())>0){
+                ingredients[i].setWeight(to_string(stoi(ingredients[i].getWeight()) + stoi(edit_ingredient.getWeight())));
                 return;
             }
             else{
@@ -63,7 +63,7 @@ void Recipe::removeIngredient(std::string ingredient){
         if (ingredients[i].getName() == ingredient) {
             ingredients.erase(ingredients.begin() + i);
             std::cout<<ingredient<<" has been removed."<<std::endl;
-            
+            return;
         }
     }
     std::cout<<"There are no "<<ingredient<<"on the list."<<std::endl;
@@ -79,6 +79,7 @@ void Recipe::deleteCookingOrder(){
 
 //수정 요망
 void Recipe::printRecipe(){
+    std::cout << " Recipe ID: " << getID() << std::endl;
     std::cout << " Recipe Name: " << getRecipeName() << std::endl;
     std::cout << " Cooking Time: " << getPrepareTime() << std::endl;
 
