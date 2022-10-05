@@ -19,6 +19,14 @@ RecipeDatabase::RecipeDatabase(){
     }
 }
 
+// function returns RecipeDatabase itself to be used as Singleton
+RecipeDatabase* RecipeDatabase::getInstance() {
+    if (recipeDB == NULL) {
+        recipeDB = new RecipeDatabase();
+    }
+    return recipeDB;
+}
+
 // Print whole recipes in DB to console
 void RecipeDatabase::showAllRecipes(){
     for(int i = 0; i < recipe_list.size(); i++){
@@ -45,7 +53,7 @@ void RecipeDatabase::updateRecipe(Recipe recipe){
     for(Recipe existingRecipe : recipe_list){
         if(isEqual(existingRecipe,recipe)){
             existingRecipe.setRecipeName(recipe.getRecipeName());
-            existingRecipe.setTime(recipe.getTime());
+            existingRecipe.setPrepareTime(recipe.getPrepareTime());
             existingRecipe.setIngredients(recipe.getIngredients());
             existingRecipe.setCookingOrder(recipe.getCookingOrder());
         }

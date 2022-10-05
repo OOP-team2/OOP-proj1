@@ -16,9 +16,11 @@ class RecipeDatabase{
         bool isSameName(Recipe existingRecipe, std::string recipename);             // Compare recipe name to find recipes with samename
         bool hasIngredient(Recipe existingRecipe, std::string ingredient);          // Check if the recipe has the ingredient
         bool isEqual(Recipe r1, Recipe r2);                                         // Compare two recipes to see if they are the same
+        RecipeDatabase* recipeDB = NULL;                                            // instance of recipeDB itself
     
     public:
         RecipeDatabase();                                                           // Constructor of recipeDB
+        RecipeDatabase* getInstance();                                              // Get instance of recipeDB
         void showAllRecipes();                                                      // Print list of recipes
         void insertRecipe(Recipe recipe);                                           // Add recipe to database
         void deleteRecipe(Recipe recipe);                                           // Delete recipe from database
