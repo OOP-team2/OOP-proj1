@@ -10,19 +10,17 @@
 
 class Plan {
 private:
-    Meal menu;
-    MealType meal_type;
-    Date date;
+    Meal meal = Meal();
+    Date date = Date();
 public:
-    Plan(Meal new_menu, MealType new_meal_type, Date new_date);
+    Plan(Date new_date, Meal new_meal);
     Date getDate();
     Meal getMeal();
-    MealType getMealType();
     void setDate(Date new_date);
-    void setMealType(MealType new_meal_type);
-    void setMeal(Meal new_menu);
-    void showPlan();
-    bool operator== (Plan otherPlan);
+    void setMeal(Meal new_meal);
+    void showInfo();
+    bool operator< (Plan other_plan);
+    bool operator== (Plan other_plan);
 };
 
 
