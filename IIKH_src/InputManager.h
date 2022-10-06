@@ -4,13 +4,15 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<map>
+#include<tuple>
 class InputManager {
 
 public:
 
     //send recipe_DB
+    void monitor();
     void recipeInput();
-    void recipeInput(std::vector<std::string> recipe_info);
     void recipeNumInput();
     void recipeNameInput();
     void recipeIngredientInput();
