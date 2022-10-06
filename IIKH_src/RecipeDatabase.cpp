@@ -13,6 +13,24 @@ RecipeDatabase::RecipeDatabase(){
     file_manager = FileManager("DB_Recipe.txt");
     data = file_manager.loadRecipeDB();
 
+    int i = 0;
+    for(auto recipe = data.begin(); recipe != data.end(); recipe){
+        recipe_list.push_back(Recipe());
+    }
+}
+
+// function returns RecipeDatabase itself to be used as Singleton
+RecipeDatabase* RecipeDatabase::getInstance() {
+    if (recipeDB == NULL) {
+        recipeDB = new RecipeDatabase();
+    }
+    return recipeDB;
+}
+
+// Print whole recipes in DB to console
+void RecipeDatabase::showAllRecipes(){
+    for(int i = 0; i < recipe_list.size(); i++){
+        std::cout<<to_string(i)<<". "<<recipe_list[i].getRecipeName()<<std::endl;
     std::vector<std::string> ingredients;
     std::vector<std::string> cooking_order; 
     for(std::vector <std::string> recipe : data){

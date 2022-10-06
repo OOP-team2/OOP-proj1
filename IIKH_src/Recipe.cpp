@@ -1,109 +1,121 @@
+#pragma once
 #include "Recipe.h"
 
-Recipe::Recipe(int new_ID,std::string new_recipe_name,int new_prepare_time,std::vector<Ingredient> new_ingredients, std::vector<std::string> new_cooking_order){
-    ID = new_ID;
+Recipe::Recipe(std::string new_recipe_name,int new_prepare_time, std::set<Ingredient> new_ingredients, std::vector<std::string> new_cooking_order) {
     recipe_name = new_recipe_name;
     prepare_time = new_prepare_time;
     ingredients = new_ingredients;
     cooking_order = new_cooking_order;
 }
 
-//getdata
-int Recipe::getID(){
-    return ID;
-}
+// funtion to get recipe name
 std::string Recipe::getRecipeName(){
     return recipe_name;
 }
+// function to get prepare time
 int Recipe::getPrepareTime(){
     return prepare_time;
 }
-std::vector<Ingredient> Recipe::getIngredients(){
+// function to get ingredients
+std::set<Ingredient> Recipe::getIngredients(){
     return ingredients;
 }
+// function to get cooking order
 std::vector<std::string> Recipe::getCookingOrder(){
     return cooking_order;
 }
 
-//set_recipe(correction)
-//this -> 
+//set_recipe(correction) 
 void Recipe::setRecipeName(std::string name) {
     recipe_name = name;
 }
-void Recipe::setPrepareTime(int s_time) {
-    prepare_time = s_time;
+void Recipe::setPrepareTime(int new_prepare_time) {
+    prepare_time = new_prepare_time;
 }
-void Recipe::setIngredients(std::vector<Ingredient> s_ingredients) {
-    ingredients = s_ingredients;
+void Recipe::setIngredients(std::set<Ingredient> new_ingredients) {
+    ingredients = new_ingredients;
 }
 void Recipe::setCookingOrder(std::vector<std::string> order){
     cooking_order = order;
 }
 
-
 //function
 void Recipe::editIngredient(Ingredient edit_ingredient){
-    for (int i=0; i<ingredients.size(); i++) {
-        if(ingredients[i].getName()==edit_ingredient.getName()) {
-            if(stoi(ingredients[i].getWeight()) + stoi(edit_ingredient.getWeight())>0){
-                ingredients[i].setWeight(to_string(stoi(ingredients[i].getWeight()) + stoi(edit_ingredient.getWeight())));
-                return;
-            }
-            else{
-                ingredients.erase(ingredients.begin() + i);
-                return;
-            }
+    auto iter = ingredients.begin();
+    for (Ingredient ing : ingredients) {
+        if (ing.getName() == edit_ingredient.getName()) {
+            break;
         }
+        iter++;
     }
-    ingredients.push_back(edit_ingredient);
+    ingredients.erase(iter);
+    std::cout << "enter a new ingredient name: ";
+    string new_ing_name;
+    std::cin >> new_ing_name;
+    Ingredient new_ingredient = Ingredient(new_ing_name);
+    ingredients.insert(edit_ingredient);
 }
 
-void Recipe::removeIngredient(std::string ingredient){
-    for (int i = 0; i < ingredients.size(); i++) {
-        if (ingredients[i].getName() == ingredient) {
-            ingredients.erase(ingredients.begin() + i);
-            std::cout<<ingredient<<" has been removed."<<std::endl;
-            return;
+void Recipe::deleteIngredient(std::string ingredientName){
+    auto iter = ingredients.begin();
+    for (Ingredient ing : ingredients) {
+        if (ing.getName() == ingredientName) {
+            break;
         }
+        iter++;
     }
-    std::cout<<"There are no "<<ingredient<<"on the list."<<std::endl;
- 
+    ingredients.erase(iter);
+    std::cout << ingredientName << " has been deleted." << std::endl;
 }
 
-void Recipe::addCookingOrder(std::string order){
-    cooking_order.push_back(order);
+void Recipe::addCookingOrder(std::string new_cooking_order){
+    cooking_order.push_back(new_cooking_order);
 }
-void Recipe::deleteCookingOrder(){
-    cooking_order.clear();
+void Recipe::deleteCookingOrder(std::string cooking_order_to_delete){
+    auto iter = cooking_order.begin();
+    for (std::string order : cooking_order) {
+        if (order == cooking_order_to_delete) {
+            break;
+        }
+        iter++;
+    }
+    cooking_order.erase(iter);
 }
 
-//수정 요망
-void Recipe::printRecipe(){
-    std::cout << " Recipe ID: " << getID() << std::endl;
-    std::cout << " Recipe Name: " << getRecipeName() << std::endl;
-    std::cout << " Cooking Time: " << getPrepareTime() << std::endl;
+// function to show recipe information
+void Recipe::showInfo(){
+    std::cout << " Recipe Name: " << recipe_name << std::endl;
+    std::cout << " Cooking Time: " << prepare_time << std::endl;
 
-    if (getIngredients().size())
+    if (ingredients.size())
     {
         std::cout << std::endl;
-        std::cout << " [Ingredients List]" << std::endl;
-        for (int i = 0; i < getIngredients().size(); i++)
-        {
-            std::cout << " " << i + 1 << ". " << getIngredients()[i].getName() << "    "
-                << getIngredients()[i].getWeight() << std::endl;
+        std::cout << " [Ingredients in this Recipe]" << std::endl;
+        for (auto ing : ingredients) {
+            std::cout << " - " << ing.getName() << '\n';
         }
     }
 
     if (getCookingOrder().size())
     {
         std::cout << std::endl;
-        std::cout << " <Cooking Order> " << std::endl;
-        for (int i = 0; i < getCookingOrder().size(); i++)
+        std::cout << " <Cooking Order of this Recipe> " << std::endl;
+        for (int i = 0; i < cooking_order.size(); i++)
         {
-            std::cout << " " << i + 1 << ". " << getCookingOrder()[i] << std::endl;
+            std::cout << " " << i + 1 << ". " << cooking_order[i] << std::endl;
         }
 
     }
     
     std::cout<<"\n\n\n";
+}
+
+
+bool Recipe::operator==(Recipe other_recipe) {
+    if (recipe_name == other_recipe.getRecipeName() && prepare_time == other_recipe.getPrepareTime()) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

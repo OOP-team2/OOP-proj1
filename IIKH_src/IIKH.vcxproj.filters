@@ -21,7 +21,7 @@
     <ClCompile Include="Plan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="recipe.cpp">
+    <ClCompile Include="Recipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Meal.cpp">
@@ -36,9 +36,6 @@
     <ClCompile Include="Ingredient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Serving.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -47,9 +44,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Serving.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -65,7 +59,7 @@
     <ClInclude Include="Date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="recipe.h">
+    <ClInclude Include="Recipe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RecipeDatabase.h">
