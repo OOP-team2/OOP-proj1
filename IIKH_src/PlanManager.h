@@ -5,23 +5,22 @@
 #ifndef OOP_PROJ1_PLANMANAGER_H
 #define OOP_PROJ1_PLANMANAGER_H
 
-#include "vector"
 #include "Plan.h"
 #include "Date.h"
 #include "Meal.h"
 
 class PlanManager {
 private:
-    std::vector<Plan> plans;
+    std::set<Plan> plans;
 public:
     PlanManager();
-    PlanManager(std::vector<Plan> newPlans);
+    PlanManager(std::set<Plan> new_plans);
     void addPlan(Plan plan);
     void deletePlan(Plan plan);
-    void reviseMeal(Plan plan, Meal meal);
-    void reviseMealType(Plan plan, MealType meal_type);
-    void reviseDate(Plan plan, Date date);
-    void showAllPlan();
+    void updateMeal(Plan plan, Meal meal);
+    void updateMealType(Plan plan, MealType meal_type);
+    void updateDate(Plan plan, Date date);
+    void showInfo();
 };
 
 

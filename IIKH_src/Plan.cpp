@@ -5,13 +5,11 @@
 #include "Plan.h"
 #include "Date.h"
 #include "Meal.h"
-#include <iostream>
-using namespace std;
+#include "iostream"
 
-Plan::Plan(Meal new_menu, MealType new_meal_type, Date new_date) {
-    menu = new_menu;
-    meal_type = new_meal_type;
+Plan::Plan(Date new_date, Meal new_meal) {
     date = new_date;
+    meal = new_meal;
 }
 
 Date Plan::getDate() {
@@ -19,28 +17,18 @@ Date Plan::getDate() {
 }
 
 Meal Plan::getMeal() {
-
-    return  menu;
-}
-
-MealType Plan::getMealType() {
-
-    return meal_type;
+    return meal;
 }
 
 void Plan::setDate(Date new_date) {
     date = new_date;
 }
 
-void Plan::setMealType(MealType new_meal_type) {
-    meal_type = new_meal_type;
+void Plan::setMeal(Meal new_meal) {
+    meal = new_meal;
 }
 
-void Plan::setMeal(Meal new_menu) {
-    menu = new_menu;
-}
-
-void Plan::showPlan() {
+void Plan::showInfo() {
     int year, month, day;
 
     year = date.getYear(); /*연도 저장 */
@@ -49,20 +37,27 @@ void Plan::showPlan() {
 
     /* date 출력 */
     cout << "------------------------------------------------"<< endl;
-	cout <<  year << " / " << month << " / " << day << " / " << meal_type << endl;
-	cout << endl << "-menu-" <<  endl;
+	cout <<  year << " / " << month << " / " << day << " / " << endl;
+	cout << endl << "- menu -" <<  endl;
 
-	vector<Serving> servings = menu.getServings(); /*벡터에 메뉴들을 저장이후 반복문으로 메뉴를 하나씩 출력. */
-	for (int i = 0; i < servings.size(); i++) {
-		std::cout << "Menu Name:	" << servings[i].getName() << endl;
-		std::cout << "       ID:	" << servings[i].getId() << endl; /* 인분도 출력 */
+    // print out meal type
+    cout << "It is a " << meal.getMealType() << '\n';
+
+	set<Recipe> recipes = meal.getRecipes(); /*벡터에 메뉴들을 저장이후 반복문으로 메뉴를 하나씩 출력. */
+	for (auto recipe : recipes) {
+		std::cout << "Recipe Name:	" << recipe.getRecipeName() << endl;
+        std::cout << "Preperation time:  " << recipe.getPrepareTime() << '\n';
 	}
 	cout << endl;
 	return;
 }
 
-bool Plan::operator==(Plan otherPlan) {
-    if (menu == otherPlan.getMeal() && meal_type == otherPlan.getMealType() && date == otherPlan.getDate()) {
+bool Plan::operator<(Plan other_plan) {
+    return date < other_plan.getDate() || meal.getMealType();
+}
+
+bool Plan::operator==(Plan other_plan) {
+    if (date == other_plan.getDate() && meal.getMealType() == other_plan.getMeal().getMealType()) {
         return true;
     }
     else {

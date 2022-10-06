@@ -1,42 +1,52 @@
-#ifndef recipe_hpp
-#define recipe_hpp
+#ifndef Recipe_cpp
+#define Recipe_cpp
 
 #include<string>
 #include<vector>
 #include<iostream>
 #include "Ingredient.h"
+#include "set"
 
 class Recipe{
     private:
-        int ID;
         std::string recipe_name;
         int prepare_time;
-        std::vector<Ingredient> ingredients;
+        std::set<Ingredient> ingredients;
         std::vector<std::string> cooking_order;
     
     public:
         Recipe();
-        Recipe(int new_ID,std::string new_recipe_name,int new_prepare_time,std::vector<Ingredient> new_ingredients, std::vector<std::string> new_cooking_order);
+        Recipe(std::string new_recipe_name,int new_prepare_time,std::set<Ingredient> new_ingredients, std::vector<std::string> new_cooking_order);
     
-        //get_recipe_information
-        int getID();
+        // a getter for recipe_name
         std::string getRecipeName();
-        int getPrepareTime();
-        std::vector<Ingredient> getIngredients();
-        std::vector<std::string> getCookingOrder();
-            
-        //set_recipe_information
+        // a setter for recipe_name
         void setRecipeName(std::string name);
+        // a getter for prepare time
+        int getPrepareTime();
+        // a setter for prepare time
         void setPrepareTime(int s_time);
-        void setIngredients(std::vector<Ingredient> s_ingredients);
+
+        // a getter for ingredients
+        std::set<Ingredient> getIngredients();
+        // a setter for setting whole ingredients 
+        void setIngredients(std::set<Ingredient> s_ingredients);
+        // a getter for cooking_order
+        std::vector<std::string> getCookingOrder();
+        // a setter for setting whole cooking_order
         void setCookingOrder(std::vector<std::string> order);
-    
-        //function
+        // function to edit specific ingredient
         void editIngredient(Ingredient edit_ingredient);
-        void removeIngredient(std::string ingredient);
+        // function to remove specifc ingredient
+        void deleteIngredient(std::string ingredient);
+        // function to add a cooking order
         void addCookingOrder(std::string order);
-        void deleteCookingOrder();
-        void printRecipe();
+        // function to delete a cooking order
+        void deleteCookingOrder(std::string cooking_order_to_delete);
+
+        bool operator==(Recipe other_recipe);
+        // function to show name, preparetime
+        void showInfo();
 };
 
 #endif

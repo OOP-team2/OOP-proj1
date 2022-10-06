@@ -1,12 +1,71 @@
 #include "InputManager.h"
 
 
+//recipe DB monitor interface 
+void InputManager::monitor() {
+    int number;
+    bool check = true;
+    std::cout << "<Select the command to run in RecipeDB from the numbers below>" << std::endl;
+    std::cout << "\n";
+    std::cout << "[1] " << "Show All Recipes" << std::endl;
+    std::cout << "[2] " << "Insert New Recipe" << std::endl;
+    std::cout << "[3] " << "Delete Recipe" << std::endl;
+    std::cout << "[4] " << "Update Existing Recipe" << std::endl;
+    std::cout << "[5] " << "Get Recipe" << std::endl;
+    std::cout << "[6] " << "Search Recipe by Ingredient" << std::endl;
+    std::cout << "[7] " << "Search Recipe by RecipeName" << std::endl;
+    std::cout << "[8] " << "Go to Main" << std::endl;
+    std::cout << "Select Number: " << std::endl;
+    while (check) {
+        std::cin >> number;
+        switch (number) {
+        case 1:
+
+            check = false;
+            break;
+        case 2:
+
+            check = false;
+            break;
+        case 3:
+            check = false;
+            break;
+        case 4:
+
+            check = false;
+            break;
+        case 5:
+
+            check = false;
+            break;
+        case 6:
+
+            check = false;
+            break;
+        case 7:
+
+            check = false;
+            break;
+        case 8:
+
+            check = false;
+            break;
+        default:
+            std::cout << "You input wrong information. Try again" << std::endl;
+        }
+    }
+}
+
 //add recipe information
 void InputManager::recipeInput() {
-    int weight, time;
+    int weight, time, ID;
     std::string ingredient, name, order;
     //std::vector<std::string> order;
     std::cout << "\n";
+
+    //get recipe_name
+    std::cout << "Recipe ID: ";
+    std::cin >> ID;
 
     //get recipe_name
     std::cout << "Recipe Name: ";
@@ -39,10 +98,6 @@ void InputManager::recipeInput() {
     }
 }
 
-//
-void InputManager::recipeInput(std::vector<std::string> recipe_info) {
-    //??
-}
 
 //delete or update recipeNumber
 void InputManager::recipeNumInput() {
@@ -64,7 +119,7 @@ void InputManager::recipeNameInput() {
 void InputManager::recipeIngredientInput() {
     std::cout << "\n";
     std::string s_Ingredient;
-    std::cout << "Input Recipe Ingredient: ";
+    std::cout << "Input Recipe Ingredient : ";
     std::cin >> s_Ingredient;
 }
 
@@ -74,16 +129,19 @@ void InputManager::recipeIngredientInput() {
 
 
 
+
+
+
+
+
 //add plan information
 void InputManager::planInput() {
-    int year, month, day, serving;
-    std::string plan, meal, menu;
+    int year, month, day;
+    std::tuple<int, int, int> Date;
+    std::string meal, menu;
+    std::map< std::tuple<int, int, int>, std::string> Plan;
     std::cout << "\n";
 
-    //get plan_name
-    std::cout << "Plan Name: ";
-    std::cin >> plan;
-    std::cout << "\n";
 
     //get Year
     std::cout << "Year: ";
@@ -98,26 +156,23 @@ void InputManager::planInput() {
     std::cin >> day;
     std::cout << "\n";
 
+    //make Date tuple
+    Date = std::make_tuple(year, month, day);
+
     //get meal
     std::cout << "Meal: ";
     std::cin >> meal;
     std::cout << "\n";
 
-    //get menu
-    std::cout << "Menu: ";
-    std::cin >> menu;
-    std::cout << "\n";
+    //make plan Map
+    Plan[Date] = meal;
 
-    //get seving
-    std::cout << "How many servings will you have?: ";
-    std::cin >> serving;
-    std::cout << "\n";
 
 
 
 }
 
-void InputManager::planInput(vector<string> plan_info) {
+void InputManager::planInput(std::vector<std::string> plan_info) {
 
 
 
@@ -136,6 +191,6 @@ void InputManager::planNameInput() {
     std::cout << "\n";
     std::string s_planName;
     std::cout << "Input plan Name: ";
-    std::cin >> s_recipeName;
+    std::cin >> s_planName;
 
 }
