@@ -125,6 +125,7 @@
     <ClInclude Include="RecipeDatabase.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="DB_Plans.txt" />
     <Text Include="DB_Recipe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
