@@ -98,25 +98,24 @@ std::vector<Recipe> RecipeDatabase::searchRecipesByIngredient(){
         }
     }
 
-    for(Recipe recipe : searched_list)
-        recipe.showInfo();
-
     return searched_list;
 }
 
 // Search recipe by ingredient
 std::vector<Recipe> RecipeDatabase::searchRecipesByRecipeName(){
     std::vector<Recipe> searched_list;
-    std::string recipename = recipeIngredientInputUI();
+    std::string recipename = recipeNameInputUI();
 
     for(Recipe existingRecipe : recipe_list){
-        if(isSameName(existingRecipe, recipename)){
+        int pos = 0;
+        int index;
+        while ((index = existingRecipe.getRecipeName().find(recipename, pos)) != std::string::npos) {
+            pos = index + 1; //new position is from next element of index
+        }
+        if (pos != 0) {
             searched_list.push_back(existingRecipe);
         }
     }
-
-    for(Recipe recipe : searched_list)
-        recipe.showInfo();
  
     return searched_list;
 }
@@ -134,7 +133,7 @@ std::vector<Recipe> RecipeDatabase::getRecipes(){
 
 // Compare name of two recipes
 bool RecipeDatabase::isSameName(Recipe existingRecipe, std::string recipename){
-    if(existingRecipe.getRecipeName().compare(recipename)) return true;
+    if(existingRecipe.getRecipeName() == recipename) return true;
     else return false;
 }
 
@@ -152,7 +151,7 @@ bool RecipeDatabase::isEqual(Recipe r1, Recipe r2){
 }
 
 
-void RecipeDatabase::updatedata(){
+void RecipeDatabase::updatedata() {
     std::string ingredients = "";
     std::string cooking_order;
     std::vector<std::string> recipe_string;
