@@ -29,7 +29,7 @@ vector< vector<string> > FileManager::loadRecipeDB(){
     char buffer[256];
     int i = 0;
 	while (ifs.getline(buffer, 256)) {
-		data.push_back(Parser().split(string(buffer),'/'));   // 구분자 : /
+		data.push_back(Parser::split(string(buffer),'/'));   // 구분자 : /
         i += 1;
 	}
     ifs.close();
