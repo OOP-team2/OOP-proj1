@@ -1,75 +1,17 @@
 ﻿  Date.cpp
   FileManager.cpp
 C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\FileManager.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
+  greeter.cpp
   Ingredient.cpp
+  InputManager.cpp
   main.cpp
   Meal.cpp
+  Parser.cpp
+C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\Parser.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   Plan.cpp
+C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\Plan.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
   PlanManager.cpp
-  recipe.cpp
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,74): error C2676: 이항 '>': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'이(가) 이 연산자를 정의하지 않거나 미리 정의된 연산자에 허용되는 형식으로의 변환을 정의하지 않습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(3570,30): message : 'bool std::operator >(std::nullptr_t,const std::unique_ptr<_Ty,_Dx> &)'일 수 있습니다.
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(std::nullptr_t,const std::unique_ptr<_Ty,_Dx> &)': 'int'에서 'const std::unique_ptr<_Ty,_Dx> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(3570): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(3565,30): message : 또는       'bool std::operator >(const std::unique_ptr<_Ty,_Dx> &,std::nullptr_t)'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::unique_ptr<_Ty,_Dx> &,std::nullptr_t)': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const std::unique_ptr<_Ty,_Dx> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(3565): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(3498,17): message : 또는       'bool std::operator >(const std::unique_ptr<_Ty,_Dx> &,const std::unique_ptr<_Ty2,_Dx2> &)'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::unique_ptr<_Ty,_Dx> &,const std::unique_ptr<_Ty2,_Dx2> &)': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const std::unique_ptr<_Ty,_Dx> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(3498): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(1898,17): message : 또는       'bool std::operator >(std::nullptr_t,const std::shared_ptr<_Ty> &) noexcept'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(std::nullptr_t,const std::shared_ptr<_Ty> &) noexcept': 'int'에서 'const std::shared_ptr<_Ty> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(1898): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(1893,17): message : 또는       'bool std::operator >(const std::shared_ptr<_Ty> &,std::nullptr_t) noexcept'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::shared_ptr<_Ty> &,std::nullptr_t) noexcept': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const std::shared_ptr<_Ty> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(1893): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(1836,17): message : 또는       'bool std::operator >(const std::shared_ptr<_Ty> &,const std::shared_ptr<_Ty0> &) noexcept'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::shared_ptr<_Ty> &,const std::shared_ptr<_Ty0> &) noexcept': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const std::shared_ptr<_Ty> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\memory(1836): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\vector(2230,30): message : 또는       'bool std::operator >(const std::vector<_Ty,_Alloc> &,const std::vector<_Ty,_Alloc> &)'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::vector<_Ty,_Alloc> &,const std::vector<_Ty,_Alloc> &)': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const std::vector<_Ty,_Alloc> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\vector(2230): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xstring(5076,17): message : 또는       'bool std::operator >(const std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem *const )'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem *const )': 'int'에서 'const _Elem *const '에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xstring(5076): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xstring(5071,17): message : 또는       'bool std::operator >(const _Elem *const ,const std::basic_string<_Elem,_Traits,_Alloc> &)'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const _Elem *const ,const std::basic_string<_Elem,_Traits,_Alloc> &)': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const _Elem *const '에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xstring(5071): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xstring(5065,17): message : 또는       'bool std::operator >(const std::basic_string<_Elem,_Traits,_Alloc> &,const std::basic_string<_Elem,_Traits,_Alloc> &) noexcept'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::basic_string<_Elem,_Traits,_Alloc> &,const std::basic_string<_Elem,_Traits,_Alloc> &) noexcept': 'int'에서 'const std::basic_string<_Elem,_Traits,_Alloc> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xstring(5065): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(3460,30): message : 또는       'bool std::operator >(const std::move_iterator<_Iter> &,const std::move_iterator<_Iter2> &)'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::move_iterator<_Iter> &,const std::move_iterator<_Iter2> &)': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const std::move_iterator<_Iter> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(3460): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(1403,30): message : 또는       'bool std::operator >(const std::reverse_iterator<_BidIt> &,const std::reverse_iterator<_BidIt2> &)'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::reverse_iterator<_BidIt> &,const std::reverse_iterator<_BidIt2> &)': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const std::reverse_iterator<_BidIt> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(1403): message : 'std::operator >' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\utility(391,27): message : 또는       'bool std::operator >(const std::pair<_Ty1,_Ty2> &,const std::pair<_Ty1,_Ty2> &)'
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\recipe.cpp(44,43): message : 'bool std::operator >(const std::pair<_Ty1,_Ty2> &,const std::pair<_Ty1,_Ty2> &)': 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'에서 'const std::pair<_Ty1,_Ty2> &'에 대한 템플릿 인수를 추론할 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\utility(391): message : 'std::operator >' 선언을 참조하십시오.
+  Recipe.cpp
   RecipeDatabase.cpp
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\RecipeDatabase.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(4287,1): error C3889: 클래스 형식 'std::equal_to<void>'의 개체에 대한 호출: 일치하는 호출 연산자를 찾을 수 없습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xstddef(182,31): message : 'unknown-type std::equal_to<void>::operator ()(_Ty1 &&,_Ty2 &&) noexcept(<expr>) const'일 수 있습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(4287,14): message : 함수 템플릿 'unknown-type std::equal_to<void>::operator ()(_Ty1 &&,_Ty2 &&) noexcept(<expr>) const'을(를) 특수화하지 못했습니다.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xstddef(182): message : 'std::equal_to<void>::operator ()' 선언을 참조하십시오.
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(4287,1): message : 다음 템플릿 인수 사용:
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(4287,1): message : '_Ty1=const Ingredient &'
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(4287,1): message : '_Ty2=const Ingredient &'
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\xutility(4304): message : 컴파일되는 함수 템플릿 인스턴스화 'bool std::equal<_InIt1,_InIt2,std::equal_to<void>>(const _InIt1,const _InIt1,const _InIt2,_Pr)'에 대한 참조를 확인하세요.
-          with
-          [
-              _InIt1=const Ingredient *,
-              _InIt2=const Ingredient *,
-              _Pr=std::equal_to<void>
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Preview\VC\Tools\MSVC\14.34.31823\include\vector(2123): message : 컴파일되는 함수 템플릿 인스턴스화 'bool std::equal<const Ingredient*,const Ingredient*>(const _InIt1,const _InIt1,const _InIt2)'에 대한 참조를 확인하세요.
-          with
-          [
-              _InIt1=const Ingredient *,
-              _InIt2=const Ingredient *
-          ]
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\RecipeDatabase.cpp(85): message : 컴파일되는 함수 템플릿 인스턴스화 'bool std::operator ==<Ingredient,std::allocator<Ingredient>>(const std::vector<Ingredient,std::allocator<Ingredient>> &,const std::vector<Ingredient,std::allocator<Ingredient>> &)'에 대한 참조를 확인하세요.
-  Serving.cpp
   코드를 생성하고 있습니다...
+  IIKH.vcxproj -> C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\x64\Debug\IIKH.exe

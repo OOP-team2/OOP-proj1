@@ -11,10 +11,10 @@
 
 class PlanManager {
 private:
-    std::set<Plan> plans;
+    std::vector<Plan> plans;
 public:
     PlanManager();
-    PlanManager(std::set<Plan> new_plans);
+    PlanManager(std::vector<Plan> new_plans);
     void addPlan(Plan plan);
     void deletePlan(Plan plan);
     void updateMeal(Plan plan, Meal meal);

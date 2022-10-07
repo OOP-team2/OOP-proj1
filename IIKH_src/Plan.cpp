@@ -1,10 +1,4 @@
-//
-// Created by HoJoonEum on 2022/09/27.
-//
-
 #include "Plan.h"
-#include "Date.h"
-#include "Meal.h"
 #include "iostream"
 
 Plan::Plan(Date new_date, Meal new_meal) {
@@ -36,24 +30,24 @@ void Plan::showInfo() {
     day = date.getDay(); /*일 저장 */
 
     /* date 출력 */
-    cout << "------------------------------------------------"<< endl;
-	cout <<  year << " / " << month << " / " << day << " / " << endl;
-	cout << endl << "- menu -" <<  endl;
+    std::cout << "------------------------------------------------"<< std::endl;
+	std::cout <<  year << " / " << month << " / " << day << " / " << std::endl;
+	std::cout << std::endl << "- menu -" <<  std::endl;
 
     // print out meal type
-    cout << "It is a " << meal.getMealType() << '\n';
+    std::cout << "It is a " << meal.getMealType() << '\n';
 
-	set<Recipe> recipes = meal.getRecipes(); /*벡터에 메뉴들을 저장이후 반복문으로 메뉴를 하나씩 출력. */
+	std::vector<Recipe> recipes = meal.getRecipes(); /*벡터에 메뉴들을 저장이후 반복문으로 메뉴를 하나씩 출력. */
 	for (auto recipe : recipes) {
-		std::cout << "Recipe Name:	" << recipe.getRecipeName() << endl;
+		std::cout << "Recipe Name:	" << recipe.getRecipeName() << std::endl;
         std::cout << "Preperation time:  " << recipe.getPrepareTime() << '\n';
 	}
-	cout << endl;
+	std::cout << std::endl;
 	return;
 }
 
-bool Plan::operator<(Plan other_plan) {
-    return date < other_plan.getDate() || meal.getMealType();
+bool Plan::operator<(const Plan& other_plan) {
+    return date < other_plan.date || meal < other_plan.meal;
 }
 
 bool Plan::operator==(Plan other_plan) {

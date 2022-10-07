@@ -4,16 +4,15 @@
 
 #include "PlanManager.h"
 #include "iostream"
-#include "Date.h"
 
 using namespace std;
 PlanManager::PlanManager() {};
 
-PlanManager::PlanManager(set<Plan> new_plans) {
+PlanManager::PlanManager(vector<Plan> new_plans) {
     plans = new_plans;
 }
 void PlanManager::addPlan(Plan plan) {
-    plans.insert(plan);
+    plans.push_back(plan);
 }
 void PlanManager::deletePlan(Plan plan) {
     auto iter = plans.begin();
@@ -34,8 +33,10 @@ void PlanManager::updateMeal(Plan plan, Meal meal) {
         }
         iter++;
     }
+    plans.erase(iter);
+
     Plan newPlan = Plan(exDate, meal);
-    plans.insert(iter, newPlan);
+    plans.insert(iter,newPlan);
     std::cout << "update finished" << "\n";
     return;
 }
@@ -52,8 +53,9 @@ void PlanManager::updateMealType(Plan plan, MealType meal_type) {
         iter++;
     }
     exMeal.setMealType(meal_type);
+    plans.erase(iter);
     Plan newPlan = Plan(exDate, exMeal);
-    plans.insert(iter, newPlan);
+    plans.insert(iter,newPlan);
     std::cout << "update finished" << "\n";
     return;
 }
@@ -67,6 +69,7 @@ void PlanManager::updateDate(Plan plan, Date date) {
         }
         iter++;
     }
+    plans.erase(iter);
     Plan newPlan = Plan(date, exMeal);
     plans.insert(iter, newPlan);
     std::cout << "update finished" << "\n";

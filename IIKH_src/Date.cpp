@@ -9,11 +9,13 @@ Date::Date() {
     year = 0;
     month = 0;
     day = 0;
+    annotation = "";
 }
-Date::Date(int new_year, int new_month, int new_day) {
+Date::Date(int new_year, int new_month, int new_day, std::string new_annotation) {
     year = new_year;
     month = new_month;
     day = new_day;
+    annotation = new_annotation;
 }
 
 int Date::getYear() {
@@ -38,6 +40,14 @@ int Date::getDay() {
 
 void Date::setDay(int new_day) {
     day = new_day;
+}
+
+std::string Date::getAnnotation() {
+    return annotation;
+}
+
+void Date::setAnnotation(std::string new_annotation) {
+    annotation = new_annotation;
 }
 
 // function for show date info

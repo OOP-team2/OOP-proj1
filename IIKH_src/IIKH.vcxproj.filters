@@ -42,6 +42,15 @@
     <ClCompile Include="PlanManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="greeter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileManager.h">
@@ -68,5 +77,17 @@
     <ClInclude Include="Plan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="greeter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DB_Recipe.txt" />
   </ItemGroup>
 </Project>

@@ -19,7 +19,7 @@ public:
     void setDate(Date new_date);
     void setMeal(Meal new_meal);
     void showInfo();
-    bool operator< (Plan other_plan);
+    bool operator< (const Plan& other_plan);
     bool operator== (Plan other_plan);
 };
 
