@@ -34,8 +34,8 @@ void RecipeDatabase::showAllRecipes(){
     std::vector<std::string> ingredients;
     std::vector<std::string> cooking_order; 
     for(std::vector <std::string> recipe : data){
-        ingredients = Parser().split(recipe[3],',');
-        cooking_order = Parser().split(recipe[4], ',');
+        ingredients = Parser::split(recipe[3],',');
+        cooking_order = Parser::split(recipe[4], ',');
         recipe_list.push_back(Recipe(stoi(recipe[0]), recipe[1], stoi(recipe[2]), ingredients, cooking_order));     // recipe생성자 수정예정
     }
 }
