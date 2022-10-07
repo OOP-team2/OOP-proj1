@@ -1,14 +1,15 @@
 #include "RecipeDatabase.h"
 #include "PlanManager.h"
 #include "InputManager.h"
-#include <memory>
+#include "Recipe.h"
+#include "memory"
 
 class Greeter {
 private:
-	unique_ptr<RecipeDatabase> recipedb;
-	unique_ptr<PlanManager> planmanager;
-	string temp_string_name;
-	int temp_num;
+	PlanManager planmanager;
+	std::string temp_string_name;
+	void searchRecipesByIngredient();
+	void searchRecipesByRecipeName();
 public:
 	Greeter();
 	void showTitle();
@@ -17,13 +18,11 @@ public:
 	void deleteRecipe();
 	void updateRecipe();
 	void showAllRecipe();
-	vector<Recipe> getRecipes();
-	vector<Recipe> searchRecipesByIngredient();
-	vector<Recipe> searchRecipesByRecipeName();
+	void showRecipes(std::vector<Recipe> recipes);
 	void addPlan();
-    	void deletePlan();
-    	void reviseMeal();
-    	void reviseMealType();
-    	void reviseDate();
-    	void showAllPlan();
+    void deletePlan();
+    void updateMeal();
+    void updateMealType();
+    void updateDate();
+    void showAllPlan();
 };
