@@ -4,11 +4,20 @@
 
 #include "Meal.h"
 
+
 Meal::Meal() {};
 Meal::Meal(MealType new_mealtype, int new_people) {
     mealtype = new_mealtype;
     people = new_people;
 };
+
+MealType Meal::getMealType() {
+    return mealtype;
+}
+
+void Meal::setMealType(MealType new_mealtype) {
+    mealtype = new_mealtype;
+}
 
 int Meal::getPeople() {
     return people;
@@ -18,8 +27,8 @@ void Meal::setPeople(int new_people) {
 }
 
 void Meal::addRecipe(Recipe recipe) {
-    recipes.emplace(recipe);
-    std::cout << "a recipe is added" << endl;
+    recipes.push_back(recipe);
+    std::cout << "a recipe is added" << std::endl;
     return;
 }
 
@@ -33,12 +42,12 @@ void Meal::deleteRecipe(Recipe recipe_to_delete) {
         iter++;
     }
     if (iter == recipes.end()) {
-        std::cout << "no recipe is found to be deleted" << endl;
+        std::cout << "no recipe is found to be deleted" << std::endl;
     }
     return;
 }
 
-std::set<Recipe> Meal::getRecipes() {
+std::vector<Recipe> Meal::getRecipes() {
     return recipes;
 }
 
@@ -55,10 +64,10 @@ bool Meal::operator==(Meal other_meal) {
     }
 }
 
-bool Meal::operator<(Meal other_meal) {
-    if (mealtype < other_meal.getMealType()) return true;
-    if (mealtype > other_meal.getMealType()) return false;
-    if (people < other_meal.getPeople()) return true;
-    if (people > other_meal.getPeople()) return false;
+bool Meal::operator<(const Meal& other_meal) {
+    if (mealtype < other_meal.mealtype) return true;
+    if (mealtype > other_meal.mealtype) return false;
+    if (people < other_meal.people) return true;
+    if (people > other_meal.people) return false;
     else return false;
 }
