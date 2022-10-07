@@ -3,6 +3,9 @@
 #include "InputManager.h"
 #include "Recipe.h"
 #include "memory"
+#include "iostream"
+#include "string"
+
 
 class Greeter {
 private:
