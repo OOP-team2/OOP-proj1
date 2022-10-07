@@ -1,2 +1,2 @@
-fried egg/30/2 eggs, 100ml oil, 5g salt/put oil on fan, put egg on, put salt on it
-spam mayo/15/100g rice, 1 spam, 10ml mayonese/cook rice, broil spam, put spam on rice, put mayonese on spam
+fried egg/30/egg,oil,salt/put oil on fan, put egg on, put salt on it
+spam mayo/15/rice,spam,mayonese/cook rice, broil spam, put spam on rice, put mayonese on spam
