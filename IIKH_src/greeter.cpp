@@ -191,15 +191,18 @@ void Greeter::searchRecipesByRecipeName() {
 
 
 void Greeter::insertRecipe() {
-
+	RecipeDatabase* recipedb = RecipeDatabase::getInstance();
+	recipedb->insertRecipe();
 }
 
 void Greeter::deleteRecipe() {
-
+	RecipeDatabase* recipedb = RecipeDatabase::getInstance();
+	recipedb->deleteRecipe();
 }
 
 void Greeter::updateRecipe() {
-
+	RecipeDatabase* recipedb = RecipeDatabase::getInstance();
+	recipedb->updateRecipe();
 }
 
 void Greeter::showAllRecipe() {
