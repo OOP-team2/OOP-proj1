@@ -33,7 +33,7 @@ void Greeter::showTitle(){
 void Greeter::showMenu(){
 	int input_number;
 	while (true) {
-		system("clear");
+		system("cls");
 		showTitle();
 		cout << "----" << endl;
 		cout << "Menu" << endl;
@@ -53,7 +53,7 @@ void Greeter::showMenu(){
 		else if (input_number == 1) {
 
 			while (true) {
-				system("clear");
+				system("cls");
 				cout << "-----------" << endl;
 				cout << "Recipe Manager" << endl;
 				cout << "-----------" << endl;
@@ -74,38 +74,38 @@ void Greeter::showMenu(){
 					break;
 				}
 				else if (input_num_in_recipe == 1) {
-					system("clear");
+					system("cls");
 					insertRecipe();
 					cin.ignore();
 					continue;
 				}
                 
 				else if (input_num_in_recipe == 2) {
-					system("clear");
+					system("cls");
 					deleteRecipe();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 3) {
-					system("clear");
+					system("cls");
 					updateRecipe();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 4) {
-					system("clear");
+					system("cls");
 					searchRecipesByIngredient();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 5){
-					system("clear");
+					system("cls");
 					searchRecipesByRecipeName();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 6) {
-					system("clear");
+					system("cls");
 					showAllRecipe();
 					cin.ignore();
 					continue;
@@ -124,7 +124,7 @@ void Greeter::showMenu(){
 		}
 		else if (input_number == 2) {
 			while (true) {
-				system("clear");
+				system("cls");
 				cout << "---------" << endl;
 				cout << "Plan Manager" << endl;
 				cout << "---------" << endl;
@@ -140,21 +140,21 @@ void Greeter::showMenu(){
 					break;
 				}
 				else if (input_num_in_plan == 1) {
-					system("clear");
+					system("cls");
 					addPlan();
 					cout << endl << "Complete. Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
 				}
 				else if (input_num_in_plan == 2) {
-					system("clear");
+					system("cls");
 					deletePlan();
 					cout << endl << "Complete. Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
 				}
 				else if (input_num_in_plan == 3) {
-					system("clear");
+					system("cls");
 					showAllPlan();
 					cout << endl << "Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
