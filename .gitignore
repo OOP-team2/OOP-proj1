@@ -409,3 +409,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.imls
+/IIKH_src/.vs/IIKH/v17/Preview/ipch/AutoPCH/909f2f366af2ac1/MAIN.ipch
+/IIKH_src/.vs/IIKH/v17/.suo
