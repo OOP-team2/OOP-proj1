@@ -40,17 +40,18 @@ vector< vector<string> > FileManager::loadRecipeDB(){
 void FileManager::writeRecipeDB(vector<vector<string>> data){
     string line = "";
     ofstream ofs;
-    ofs.open(file_name, ios::trunc);
+    ofs.open(file_name, ios::out);
 
     for(int i = 0; i < data.size(); i++){
         for(int j = 0; j < data[i].size(); j++){
             line += data[i][j];
             line += "/";
         }
-        ofs << line;
-        line = "";
+        line += "\n";
     }
 
+    ofs << line;
+    // line.clear();
     ofs.close();
 }
 

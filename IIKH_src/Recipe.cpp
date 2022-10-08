@@ -88,17 +88,24 @@ void Recipe::deleteCookingOrder(std::string cooking_order_to_delete){
 }
 
 bool Recipe::hasIngredient(std::string ingredient) {
-    auto ing = ingredients.find(ingredient);
-    if (ing != ingredients.end()) {
-        return true;
+    for(std::string ing : ingredients){
+        if (ing.find(ingredient) != std::string::npos && ing.find(ingredient) >= 0)
+            return true;
     }
-    else {
-        return false;
-    }
+    return false;
+
+    // auto ing = ingredients.find(ingredient);
+    // if (ing != ingredients.end()) {
+    //     return true;
+    // }
+    // else {
+    //     return false;
+    // }
 }
 
 // function to show recipe information
 void Recipe::showInfo(){
+    std::cout << " ----------------------------------------------- " << std::endl;
     std::cout << " Recipe Name: " << recipe_name << std::endl;
     std::cout << " Cooking Time: " << prepare_time << std::endl;
 
@@ -121,8 +128,9 @@ void Recipe::showInfo(){
         }
 
     }
+    std::cout << " ----------------------------------------------- " << std::endl;
     
-    std::cout<<"\n\n\n";
+    std::cout<<"Press Any key to continue..."<<std::endl;
 }
 
 

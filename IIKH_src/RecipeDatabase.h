@@ -13,7 +13,7 @@
 */
 class RecipeDatabase{
     public:
-        static RecipeDatabase* recipe_db;                                            // instance of recipeDB itself
+        static RecipeDatabase* recipe_db;                                                  // instance of recipeDB itself
         static FileManager file_manager;                                                   // Object to load and write recipe data from stored file
         static std::vector< std::vector<std::string> > data;                               // raw data of recipes
         static std::vector<Recipe> recipe_list;                                            // Database of recipes at runtime
@@ -30,6 +30,7 @@ class RecipeDatabase{
     
         static RecipeDatabase* getInstance();                                              // Get instance of recipeDB
         static void showAllRecipes();                                                      // Print list of recipes
+        static void showRecipe();                                                          // Print a recipe
         static void insertRecipe();                                                        // Add recipe to database
         static void deleteRecipe();                                                        // Delete recipe from database
         static void updateRecipe();                                                        // Update selected recipe
