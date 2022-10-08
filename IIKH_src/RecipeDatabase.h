@@ -26,7 +26,7 @@ class RecipeDatabase{
         static std::string recipeNameInputUI();                                            // Console name input UI for search by name
         static std::string recipeIngredientInputUI();                                      // Console ingredient input UI for search by ingredient
         static void updatedata();                                                          // Update data field to write data to file
-        RecipeDatabase();                                                           // Constructor of recipeDB
+        RecipeDatabase();                                                                  // Constructor of recipeDB
     
         static RecipeDatabase* getInstance();                                              // Get instance of recipeDB
         static void showAllRecipes();                                                      // Print list of recipes
