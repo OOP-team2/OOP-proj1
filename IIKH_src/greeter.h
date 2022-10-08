@@ -8,6 +8,7 @@ class Greeter {
 private:
 	PlanManager planmanager;
 	std::string temp_string_name;
+	RecipeDatabase* recipedb;
 	void searchRecipesByIngredient();
 	void searchRecipesByRecipeName();
 public:

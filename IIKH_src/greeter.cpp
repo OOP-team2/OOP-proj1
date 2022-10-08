@@ -2,10 +2,11 @@
 using namespace std;
 
 Greeter::Greeter() {
+	recipedb = RecipeDatabase::getInstance();
 }
 
 void Greeter::searchRecipesByIngredient() {
-	RecipeDatabase* recipedb = RecipeDatabase::getInstance();
+	// RecipeDatabase* recipedb = RecipeDatabase::getInstance();
 	auto recipes = recipedb->searchRecipesByIngredient();
 
 	for (auto recipe : recipes) {
@@ -16,7 +17,7 @@ void Greeter::searchRecipesByIngredient() {
 }
 
 void Greeter::searchRecipesByRecipeName() {
-	RecipeDatabase* recipedb = RecipeDatabase::getInstance();
+	// RecipeDatabase* recipedb = RecipeDatabase::getInstance();
 	auto recipes = recipedb->searchRecipesByRecipeName();
 
 	for (auto recipe : recipes) {
@@ -75,38 +76,39 @@ void Greeter::showMenu(){
 				}
 				else if (input_num_in_recipe == 1) {
 					system("cls");
-					insertRecipe();
+					recipedb->insertRecipe();
 					cin.ignore();
 					continue;
 				}
                 
 				else if (input_num_in_recipe == 2) {
 					system("cls");
-					deleteRecipe();
+					recipedb->deleteRecipe();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 3) {
 					system("cls");
-					updateRecipe();
+					recipedb->updateRecipe();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 4) {
 					system("cls");
-					searchRecipesByIngredient();
+					recipedb->searchRecipesByIngredient();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 5){
 					system("cls");
-					searchRecipesByRecipeName();
+					recipedb->searchRecipesByRecipeName();
 					cin.ignore();
 					continue;
 				}
 				else if (input_num_in_recipe == 6) {
 					system("cls");
-					showAllRecipe();
+					recipedb->showAllRecipes();
+					recipedb->showRecipe();
 					cin.ignore();
 					continue;
 				}
