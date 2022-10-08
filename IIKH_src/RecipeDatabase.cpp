@@ -18,12 +18,12 @@ RecipeDatabase::RecipeDatabase(){
 
     int i = 0;
     for(std::vector <std::string> recipe : data){
-        std::vector<std::string> ingredients = Parser().split(recipe[2], ',');
+        std::vector<std::string> ingredients = Parser::split(recipe[2], ',');
         std::set<std::string> set_ingredients;
         for (auto ing : ingredients) {
             set_ingredients.insert(ing);
         }
-        std::vector<std::string> cooking_order = Parser().split(recipe[3], ',');
+        std::vector<std::string> cooking_order = Parser::split(recipe[3], ',');
         recipe_list.push_back(Recipe(recipe[0], recipe[1], set_ingredients, cooking_order));
     }
 }
