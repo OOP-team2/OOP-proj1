@@ -1,10 +1,7 @@
-//
-// Created by HoJoonEum on 2022/09/26.
-//
-
 #include "PlanManager.h"
 using namespace std;
 
+// read txt file and initialize plans from existing plan data
 PlanManager::PlanManager() {
     vector<string> date_data, recipe_data;
     string people;
@@ -44,16 +41,19 @@ PlanManager::PlanManager() {
     }
 }
 
+// returns a plan at an index
 Plan PlanManager::getPlanAt(int index) {
     return plans[index];
 }
 
+// push a plan back to plans and save current plans to txt file
 void PlanManager::addPlan(Plan plan) {
     plans.push_back(plan);
     savePlans();
     return;
 }
 
+// delete a plan from plans and save current plans to txt file
 void PlanManager::deletePlan(Plan plan) {
     auto iter = plans.begin();
     for (Plan ex_plan : plans) {
@@ -64,6 +64,8 @@ void PlanManager::deletePlan(Plan plan) {
     savePlans();
     return;
 }
+
+// update a meal of a plan 
 void PlanManager::updateMeal(Plan plan, Meal meal) {
     auto iter = plans.begin();
     Date exDate;
@@ -78,9 +80,12 @@ void PlanManager::updateMeal(Plan plan, Meal meal) {
 
     Plan newPlan = Plan(exDate, meal);
     plans.insert(iter,newPlan);
+    savePlans();
     std::cout << "update finished" << "\n";
     return;
 }
+
+// update a meal type of a plan
 void PlanManager::updateMealType(Plan plan, MealType meal_type) {
     auto iter = plans.begin();
     Meal exMeal;
@@ -97,9 +102,12 @@ void PlanManager::updateMealType(Plan plan, MealType meal_type) {
     plans.erase(iter);
     Plan newPlan = Plan(exDate, exMeal);
     plans.insert(iter,newPlan);
+    savePlans();
     std::cout << "update finished" << "\n";
     return;
 }
+
+// update a date of a plan
 void PlanManager::updateDate(Plan plan, Date date) {
     auto iter = plans.begin();
     Meal exMeal;
@@ -117,6 +125,7 @@ void PlanManager::updateDate(Plan plan, Date date) {
     return;
 }
 
+// save current plans to txt file
 void PlanManager::savePlans() {
     vector<string> stringfiedPlans;
     string stringfiedPlan;
@@ -128,6 +137,7 @@ void PlanManager::savePlans() {
     cout << "Plans are saved" << endl;
 }
 
+// print out information of plans
 void PlanManager::showInfo() {
     int index = 1;
     for (Plan plan : plans) {
