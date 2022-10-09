@@ -8,18 +8,25 @@
 #include "Plan.h"
 #include "Date.h"
 #include "Meal.h"
+#include "FileManager.h"
+#include "Parser.h"
+#include "Recipe.h"
+#include "iostream"
+#include "vector"
 
 class PlanManager {
 private:
     std::vector<Plan> plans;
+    FileManagerForPlans file_manager = FileManagerForPlans();
 public:
     PlanManager();
-    PlanManager(std::vector<Plan> new_plans);
+    Plan getPlanAt(int index);
     void addPlan(Plan plan);
     void deletePlan(Plan plan);
     void updateMeal(Plan plan, Meal meal);
     void updateMealType(Plan plan, MealType meal_type);
     void updateDate(Plan plan, Date date);
+    void savePlans();
     void showInfo();
 };
 
