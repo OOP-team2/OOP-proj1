@@ -138,8 +138,6 @@ void Recipe::showInfo(){
 
     }
     std::cout << " ----------------------------------------------- " << std::endl;
-    
-    std::cout<<"Press Any key to continue..."<<std::endl;
 }
 
 

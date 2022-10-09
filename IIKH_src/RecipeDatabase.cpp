@@ -1,16 +1,15 @@
 //RecipeDB
 #include "RecipeDatabase.h"
 
-/*
-    Constructor
-    : Load recipes from FileManager and push to runtime database
-*/
-
 RecipeDatabase* RecipeDatabase::recipe_db = NULL;
 FileManager RecipeDatabase::file_manager = FileManager();
 std::vector< std::vector<std::string> > RecipeDatabase::data = {};
 std::vector<Recipe> RecipeDatabase::recipe_list = {};
 
+/*
+    Constructor
+    : Load recipes from FileManager and push to database
+*/
 RecipeDatabase::RecipeDatabase(){
     std::vector< std::vector<std::string> > data;
     file_manager = FileManager();
@@ -27,6 +26,11 @@ RecipeDatabase::RecipeDatabase(){
     }
 }
 
+/*
+    Getter
+    : To access data from other components
+*/
+
 // function returns RecipeDatabase itself to be used as Singleton
 RecipeDatabase* RecipeDatabase::getInstance() {
     if (recipe_db == NULL) {
@@ -34,6 +38,17 @@ RecipeDatabase* RecipeDatabase::getInstance() {
     }
     return recipe_db;
 }
+
+// returns recipe data
+std::vector<Recipe> RecipeDatabase::getRecipes(){
+    return recipe_list;
+}
+
+
+/*
+    Interface
+    : Methods called by Greeter. visible from outside.
+*/
 
 // Print whole recipes in DB to console
 void RecipeDatabase::showAllRecipes(){
@@ -43,11 +58,13 @@ void RecipeDatabase::showAllRecipes(){
     std::cout << "every recipe is shown up" << std::endl;
 }
 
+// Print a recipe in DB to console
 void RecipeDatabase::showRecipe(){
     std::cout<<"\n";
     std::cout << "Select Recipe you want to see" << std::endl;
     int num = recipeNumInputUI();
     recipe_list[num-1].showInfo();
+    std::cout<<"Press Any key to continue..."<<std::endl;
 }
 
 // Add new recipe to database
@@ -72,6 +89,8 @@ void RecipeDatabase::deleteRecipe(){
     recipe_list.erase(recipe_list.begin() + (num-1));
     updatedata();
     file_manager.writeRecipeDB(data);
+    std::cout<<"Recipe is Deleted"<<std::endl;
+    std::cout<<"Press Any key to continue..."<<std::endl;
     return;
 } 
 
@@ -105,7 +124,7 @@ std::vector<Recipe> RecipeDatabase::searchRecipesByIngredient(){
     std::string ingredient = recipeIngredientInputUI();
 
     for(Recipe existingRecipe : recipe_list){
-        if(hasIngredient(existingRecipe, ingredient)){
+        if(existingRecipe.hasIngredient(ingredient)){
             searched_list.push_back(existingRecipe);
         }
     }
@@ -116,6 +135,7 @@ std::vector<Recipe> RecipeDatabase::searchRecipesByIngredient(){
         for(Recipe recipe : searched_list)
         recipe.showInfo();
     }
+    std::cout<<"Press Any key to continue..."<<std::endl;
 
     return searched_list;
 }
@@ -123,7 +143,7 @@ std::vector<Recipe> RecipeDatabase::searchRecipesByIngredient(){
 // Search recipe by ingredient
 std::vector<Recipe> RecipeDatabase::searchRecipesByRecipeName(){
     std::vector<Recipe> searched_list;
-    std::string recipename = recipeIngredientInputUI();
+    std::string recipename = recipeNameInputUI();
 
     for(Recipe existingRecipe : recipe_list){
         std::string name = existingRecipe.getRecipeName();
@@ -137,39 +157,15 @@ std::vector<Recipe> RecipeDatabase::searchRecipesByRecipeName(){
         for(Recipe recipe : searched_list)
         recipe.showInfo();
     }
+    std::cout<<"Press Any key to continue..."<<std::endl;
  
     return searched_list;
 }
 
-
-// Getter
-std::vector<Recipe> RecipeDatabase::getRecipes(){
-    return recipe_list;
-}
-
 /*
     Util function
-    : Use only in DB class. not visible from outside
+    : Use only in DB class. not visible from outside.
 */
-
-// Compare name of two recipes
-bool RecipeDatabase::isSameName(Recipe existingRecipe, std::string recipename){
-    if(existingRecipe.getRecipeName().compare(recipename)) return true;
-    else return false;
-}
-
-// Check if the recipe has the ingredient
-bool RecipeDatabase::hasIngredient(Recipe existingRecipe, std::string ingredient){
-    return existingRecipe.hasIngredient(ingredient);
-}
-
-// Compare two recipes to see if they are the same
-bool RecipeDatabase::isEqual(Recipe r1, Recipe r2){
-    if(r1.getRecipeName() == r2.getRecipeName())
-        return true;
-    else
-        return false;
-}
 
 // syncronize recipe_list and data to write file
 void RecipeDatabase::updatedata(){
@@ -208,9 +204,11 @@ void RecipeDatabase::updatedata(){
 }
 
 /*
-    UI function
+    UI function. 
+    : Front-end of Recipe DB which is connected with Interface. not visible from outside.
 */
 
+// used when user creates a recipe
 Recipe RecipeDatabase::recipeInputUI() {
     std::string prepare_time;
     std::string input, name;
@@ -257,6 +255,7 @@ Recipe RecipeDatabase::recipeInputUI() {
     return Recipe(name, prepare_time, ingredients, order); 
 }
 
+// used when user modifies a recipe
 Recipe RecipeDatabase::recipeInputUI(Recipe recipe) {
     std::string prepare_time;
     std::string input, name;
@@ -332,6 +331,7 @@ Recipe RecipeDatabase::recipeInputUI(Recipe recipe) {
     return Recipe(name, prepare_time, ingredients, order); 
 }
 
+// used when user selects a recipe to delete or modify recipe
 int RecipeDatabase::recipeNumInputUI() {
     int number;
 
@@ -343,6 +343,7 @@ int RecipeDatabase::recipeNumInputUI() {
     return number;
 }
 
+// used when user searches a recipe with name
 std::string RecipeDatabase::recipeNameInputUI() {
     std::string s_recipeName;
     
@@ -354,6 +355,7 @@ std::string RecipeDatabase::recipeNameInputUI() {
     return s_recipeName;
 }
 
+// used when user searches a recipe with ingredient
 std::string RecipeDatabase::recipeIngredientInputUI() {
     std::string s_Ingredient;
     
