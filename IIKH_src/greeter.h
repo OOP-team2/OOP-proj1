@@ -3,6 +3,8 @@
 #include "InputManager.h"
 #include "Recipe.h"
 #include "memory"
+#include "string"
+#include "iostream"
 
 class Greeter {
 private:
