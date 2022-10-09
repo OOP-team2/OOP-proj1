@@ -1,17 +1,2 @@
-﻿  Date.cpp
-  FileManager.cpp
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\FileManager.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  greeter.cpp
-  Ingredient.cpp
-  InputManager.cpp
-  main.cpp
-  Meal.cpp
-  Parser.cpp
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\Parser.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  Plan.cpp
-C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\Plan.cpp(1,1): warning C4819: 현재 코드 페이지(949)에서 표시할 수 없는 문자가 파일에 들어 있습니다. 데이터가 손실되지 않게 하려면 해당 파일을 유니코드 형식으로 저장하십시오.
-  PlanManager.cpp
-  Recipe.cpp
-  RecipeDatabase.cpp
-  코드를 생성하고 있습니다...
-  IIKH.vcxproj -> C:\Users\hojooneum\Documents\OOP\proj1\IIKH_src\x64\Debug\IIKH.exe
+﻿  main.cpp
+  IIKH.vcxproj -> C:\Users\hojooneum\Documents\OOP_team1\OOP-proj1\IIKH_src\x64\Debug\IIKH.exe
