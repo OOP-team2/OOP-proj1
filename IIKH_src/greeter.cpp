@@ -1,15 +1,23 @@
 #include "greeter.h"
 using namespace std;
 
+// constructor for Greeter. initializes recipedb and planmanager
 Greeter::Greeter() {
 	recipedb = RecipeDatabase::getInstance();
 	planmanager = PlanManager();
 }
 
+// destructor for Greeter. releases memory for recipedb
+Greeter::~Greeter() {
+	delete recipedb;
+}
+
+// it prints out welcome title of IIKH
 void Greeter::showTitle(){
     cout << "Welcome to IIKH! " << endl;
 }
 
+// it prints out options of IIKH and keep getting input by user and call functions according to user input
 void Greeter::showMenu(){
 	int input_number;
 	while (true) {
@@ -163,6 +171,7 @@ void Greeter::showMenu(){
 	}
 }
 
+// it gets user input and add a new plan
 void Greeter::addPlan() {
 	Date newDate = Date();
 	Meal newMeal = Meal();
@@ -213,6 +222,7 @@ void Greeter::addPlan() {
 	cout << "Your Plan is added!" << endl;
 }
 
+// it gets a existing plan and deleate a plan
 void Greeter::deletePlan() {
 	string indexToDelete;
 	planmanager.showInfo();
@@ -223,19 +233,8 @@ void Greeter::deletePlan() {
 	cout << "A Plan is deleted" << endl;
 }
 
-void Greeter::updateMeal() {
-
-}
-
-void Greeter::updateMealType() {
-
-}
-
-void Greeter::updateDate() {
-
-}
-
-void Greeter::showAllPlan() {
+// it shows all plans
+void Greeter::showAllPlans() {
 	planmanager.showInfo();
 	return;
 }
