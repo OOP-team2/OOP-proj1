@@ -22,7 +22,7 @@ public:
     FileManagerForPlans();
     FileManagerForPlans(std::string file_name);
     std::vector<std::vector< std::string> > loadPlans();
-    void writePlans(std::vector<std::vector<std::string>> plandata);
+    void writePlans(std::vector<std::string> plandata);
 };
 
 
