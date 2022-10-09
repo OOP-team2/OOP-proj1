@@ -358,7 +358,7 @@ std::string RecipeDatabase::recipeIngredientInputUI() {
     std::string s_Ingredient;
     
     std::cout << "\n";
-    std::cout << "Input Recipe Ingredient: "<< std::flush;
+    std::cout << "Input Recipe Name: "<< std::flush;
 
     std::getline(std::cin, s_Ingredient);
 
