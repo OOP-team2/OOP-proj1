@@ -7,6 +7,8 @@
 
 #include "Meal.h"
 #include "Date.h"
+#include "SerializeHelper.h"
+#include "iostream"
 
 class Plan {
 private:
@@ -19,8 +21,9 @@ public:
     void setDate(Date new_date);
     void setMeal(Meal new_meal);
     void showInfo();
-    bool operator< (const Plan& other_plan);
-    bool operator== (Plan other_plan);
+    bool isLesser(Plan other_plan);
+    bool isSame(Plan other_plan);
+    std::string toString();
 };
 
 

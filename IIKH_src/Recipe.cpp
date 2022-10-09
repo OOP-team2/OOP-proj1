@@ -1,4 +1,3 @@
-#pragma once
 #include "Recipe.h"
 
 Recipe::Recipe() {
@@ -93,14 +92,24 @@ bool Recipe::hasIngredient(std::string ingredient) {
             return true;
     }
     return false;
+}
 
-    // auto ing = ingredients.find(ingredient);
-    // if (ing != ingredients.end()) {
-    //     return true;
-    // }
-    // else {
-    //     return false;
-    // }
+std::string Recipe::toString() {
+    std::string stringfied = "";
+    stringfied += recipe_name;
+    stringfied += '.';
+    stringfied += prepare_time;
+    stringfied += '.';
+    for (auto ing : ingredients) {
+        stringfied += ing;
+        stringfied += ',';
+    }
+    stringfied += '.';
+    for (auto co : cooking_order) {
+        stringfied += co;
+        stringfied += ',';
+    }
+    return stringfied;
 }
 
 // function to show recipe information
@@ -129,8 +138,6 @@ void Recipe::showInfo(){
 
     }
     std::cout << " ----------------------------------------------- " << std::endl;
-    
-    std::cout<<"Press Any key to continue..."<<std::endl;
 }
 
 

@@ -3,28 +3,7 @@ using namespace std;
 
 Greeter::Greeter() {
 	recipedb = RecipeDatabase::getInstance();
-}
-
-void Greeter::searchRecipesByIngredient() {
-	// RecipeDatabase* recipedb = RecipeDatabase::getInstance();
-	auto recipes = recipedb->searchRecipesByIngredient();
-
-	for (auto recipe : recipes) {
-		recipe.showInfo();
-	}
-	cout << "every recipe is shown up" << endl;
-	return;
-}
-
-void Greeter::searchRecipesByRecipeName() {
-	// RecipeDatabase* recipedb = RecipeDatabase::getInstance();
-	auto recipes = recipedb->searchRecipesByRecipeName();
-
-	for (auto recipe : recipes) {
-		recipe.showInfo();
-	}
-	cout << "every recipe is shown up" << endl;
-	return;
+	planmanager = PlanManager();
 }
 
 void Greeter::showTitle(){
@@ -184,36 +163,64 @@ void Greeter::showMenu(){
 	}
 }
 
-
-void Greeter::insertRecipe() {
-
-}
-
-void Greeter::deleteRecipe() {
-
-}
-
-void Greeter::updateRecipe() {
-
-}
-
-void Greeter::showAllRecipe() {
-
-}
-
-void Greeter::showRecipes(std::vector<Recipe> recipes) {
-	for (auto recipe : recipes) {
-		recipe.showInfo();
-	}
-	std::cout << "recipes are shown up" << endl;
-}
-
 void Greeter::addPlan() {
+	Date newDate = Date();
+	Meal newMeal = Meal();
+	string userInput;
+	cout << "You are now adding a Plan" << endl;
+	cout << "Let's add a Date!" << endl;
+	cout << "Enter a Year: ";
+	getline(cin, userInput);
+	newDate.setYear(userInput);
+	userInput.clear();
 
+	cout << "Enter a Month: ";
+	getline(cin, userInput);
+	newDate.setMonth(userInput);
+	userInput.clear();
+
+	cout << "Enter a Day: ";
+	getline(cin, userInput);
+	newDate.setDay(userInput);
+	userInput.clear();
+
+	cout << "Let's add a Meal!" << endl;
+	cout << "Enter a Meal Type(Breakfast or Launch or Dinner)" << endl;
+	getline(cin, userInput);
+	MealType newMealType;
+	newMealType = Meal::stringfiedToMealType(userInput);
+	newMeal.setMealType(newMealType);
+	userInput.clear();
+
+	cout << "Enter how many people you have" << endl;
+	getline(cin, userInput);
+	newMeal.setPeople(userInput);
+	userInput.clear();
+
+	cout << "Now you are adding Recipes!" << endl;
+	vector<string> selectedRecipeIndices;
+	vector<Recipe> recipes = RecipeDatabase::getRecipes();
+	RecipeDatabase::showAllRecipes();
+	cout << "Enter all indices of Recipes you want to add(seperate with comma)" << endl;
+	getline(cin, userInput);
+	vector<string> indices = Parser::split(userInput, ',');
+	for (auto index : indices) {
+		newMeal.addRecipe(recipes[stoi(index)-1]);
+	}
+	userInput.clear();
+	Plan newPlan = Plan(newDate, newMeal);
+	planmanager.addPlan(newPlan);
+	cout << "Your Plan is added!" << endl;
 }
 
 void Greeter::deletePlan() {
-
+	string indexToDelete;
+	planmanager.showInfo();
+	cout << "Enter an index of a Recipe you want to delete: ";
+	getline(cin, indexToDelete);
+	Plan planToDelete = planmanager.getPlanAt(stoi(indexToDelete)-1);
+	planmanager.deletePlan(planToDelete);
+	cout << "A Plan is deleted" << endl;
 }
 
 void Greeter::updateMeal() {
@@ -229,5 +236,6 @@ void Greeter::updateDate() {
 }
 
 void Greeter::showAllPlan() {
-
+	planmanager.showInfo();
+	return;
 }

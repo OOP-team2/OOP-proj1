@@ -1,5 +1,5 @@
-#include "sstream"
 #include "Parser.h"
+#include "sstream"
 
 using namespace std;
 
@@ -10,9 +10,9 @@ vector<string> Parser::split(string str, char Delimiter) {
  
     vector<string> result;
 
-    while (getline(iss, buffer, Delimiter)) {
-        result.push_back(buffer);
-    }
+        while (getline(iss, buffer, Delimiter)) {
+            result.push_back(buffer);
+        }
  
     return result;
 }
