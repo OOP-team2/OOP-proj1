@@ -29,21 +29,24 @@ std::vector<std::string> Recipe::getCookingOrder(){
     return cooking_order;
 }
 
-//set_recipe(correction) 
+//function to set recipe name
 void Recipe::setRecipeName(std::string name) {
     recipe_name = name;
 }
+// function to set prepare time
 void Recipe::setPrepareTime(std::string new_prepare_time) {
     prepare_time = new_prepare_time;
 }
+// function to set ingredients
 void Recipe::setIngredients(std::set<std::string> new_ingredients) {
     ingredients = new_ingredients;
 }
+// function to set cooking order
 void Recipe::setCookingOrder(std::vector<std::string> order){
     cooking_order = order;
 }
 
-//function
+//function to edit ingredient
 void Recipe::editIngredient(std::string edit_ingredient){
     auto iter = ingredients.begin();
     for (std::string ing : ingredients) {
@@ -60,6 +63,7 @@ void Recipe::editIngredient(std::string edit_ingredient){
     ingredients.insert(edit_ingredient);
 }
 
+//function to delete ingredient
 void Recipe::deleteIngredient(std::string ingredientName){
     auto iter = ingredients.begin();
     for (std::string ing : ingredients) {
@@ -72,9 +76,11 @@ void Recipe::deleteIngredient(std::string ingredientName){
     std::cout << ingredientName << " has been deleted." << std::endl;
 }
 
+//function to add cooking order
 void Recipe::addCookingOrder(std::string new_cooking_order){
     cooking_order.push_back(new_cooking_order);
 }
+//function to delete cooking order
 void Recipe::deleteCookingOrder(std::string cooking_order_to_delete){
     auto iter = cooking_order.begin();
     for (std::string order : cooking_order) {
@@ -85,7 +91,7 @@ void Recipe::deleteCookingOrder(std::string cooking_order_to_delete){
     }
     cooking_order.erase(iter);
 }
-
+//function to check ingredient existence
 bool Recipe::hasIngredient(std::string ingredient) {
     for(std::string ing : ingredients){
         if (ing.find(ingredient) != std::string::npos && ing.find(ingredient) >= 0)
@@ -93,7 +99,7 @@ bool Recipe::hasIngredient(std::string ingredient) {
     }
     return false;
 }
-
+//function to change recipe information string
 std::string Recipe::toString() {
     std::string stringfied = "";
     stringfied += recipe_name;
@@ -140,7 +146,7 @@ void Recipe::showInfo(){
     std::cout << " ----------------------------------------------- " << std::endl;
 }
 
-
+//function to overload == operator 
 bool Recipe::operator==(Recipe other_recipe) {
     if (recipe_name == other_recipe.getRecipeName() && prepare_time == other_recipe.getPrepareTime()) {
         return true;
@@ -149,7 +155,7 @@ bool Recipe::operator==(Recipe other_recipe) {
         return false;
     }
 }
-
+//function to overload < operator 
 bool Recipe::operator<(const Recipe& other_recipe) {
     if (recipe_name < other_recipe.recipe_name) return true;
     if (recipe_name > other_recipe.recipe_name) return false;
