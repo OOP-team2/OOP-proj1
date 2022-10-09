@@ -8,25 +8,27 @@
 
 class Date {
 private:
-    int year;
-    int month;
-    int day;
+    std::string year;
+    std::string month;
+    std::string day;
     std::string annotation;
 public:
     Date();
-    Date(int new_year, int new_month, int new_day, std::string new_annotation);
-    int getYear();
-    void setYear(int new_year);
-    int getMonth();
-    void setMonth(int new_month);
-    int getDay();
-    void setDay(int new_day);
+    Date(std::string new_year, std::string new_month, std::string new_day);
+    Date(std::string new_year, std::string new_month, std::string new_day, std::string new_annotation);
+    std::string getYear();
+    void setYear(std::string new_year);
+    std::string getMonth();
+    void setMonth(std::string new_month);
+    std::string getDay();
+    void setDay(std::string new_day);
     std::string getAnnotation();
     void setAnnotation(std::string new_annotation);
+    std::string toString();
     void showInfo();
 
-    bool operator== (Date other_date);
-    bool operator< (Date other_date);
+    bool isSame(Date other_date);
+    bool isLesser(Date other_date);
 };
 
 
