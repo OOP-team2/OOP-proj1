@@ -124,7 +124,6 @@
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="greeter.cpp" />
     <ClCompile Include="Ingredient.cpp" />
-    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Meal.cpp" />
     <ClCompile Include="Parser.cpp" />
@@ -139,7 +138,6 @@
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="greeter.h" />
     <ClInclude Include="Ingredient.h" />
-    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Meal.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Plan.h" />
