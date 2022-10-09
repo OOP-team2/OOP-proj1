@@ -1,26 +1,32 @@
 #include "Plan.h"
 
+// initialize date and meal
 Plan::Plan(Date new_date, Meal new_meal) {
     date = new_date;
     meal = new_meal;
 }
 
+// returns date
 Date Plan::getDate() {
     return date;
 }
 
-Meal Plan::getMeal() {
-    return meal;
-}
-
+// set new value to date
 void Plan::setDate(Date new_date) {
     date = new_date;
 }
 
+// returns meal 
+Meal Plan::getMeal() {
+    return meal;
+}
+
+// set new value to meal
 void Plan::setMeal(Meal new_meal) {
     meal = new_meal;
 }
 
+// print out information of a plan
 void Plan::showInfo() {
     std::string year, month, day;
 
@@ -46,10 +52,12 @@ void Plan::showInfo() {
 	return;
 }
 
-bool Plan::isLesser(Plan other_plan) {
-    return date.isLesser(other_plan.getDate()) || meal.isLesser(other_plan.getMeal());
+// examine other plan to check if less plan
+bool Plan::isLess(Plan other_plan) {
+    return date.isLess(other_plan.getDate()) || meal.isLess(other_plan.getMeal());
 }
 
+// examine other plan to check if same plan
 bool Plan::isSame(Plan other_plan) {
     if (date.isSame(other_plan.getDate()) && meal.getMealType() == other_plan.getMeal().getMealType()) {
         return true;
@@ -59,6 +67,7 @@ bool Plan::isSame(Plan other_plan) {
     }
 }
 
+// returns string representation of a plan
 std::string Plan::toString() {
     std::string eachPlan = "";
     eachPlan += date.toString();
