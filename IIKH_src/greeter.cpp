@@ -6,28 +6,6 @@ Greeter::Greeter() {
 	planmanager = PlanManager();
 }
 
-void Greeter::searchRecipesByIngredient() {
-	// RecipeDatabase* recipedb = RecipeDatabase::getInstance();
-	auto recipes = recipedb->searchRecipesByIngredient();
-
-	for (auto recipe : recipes) {
-		recipe.showInfo();
-	}
-	cout << "every recipe is shown up" << endl;
-	return;
-}
-
-void Greeter::searchRecipesByRecipeName() {
-	// RecipeDatabase* recipedb = RecipeDatabase::getInstance();
-	auto recipes = recipedb->searchRecipesByRecipeName();
-
-	for (auto recipe : recipes) {
-		recipe.showInfo();
-	}
-	cout << "every recipe is shown up" << endl;
-	return;
-}
-
 void Greeter::showTitle(){
     cout << "Welcome to IIKH! " << endl;
 }
@@ -183,30 +161,6 @@ void Greeter::showMenu(){
 		}
 
 	}
-}
-
-
-void Greeter::insertRecipe() {
-
-}
-
-void Greeter::deleteRecipe() {
-
-}
-
-void Greeter::updateRecipe() {
-
-}
-
-void Greeter::showAllRecipe() {
-
-}
-
-void Greeter::showRecipes(std::vector<Recipe> recipes) {
-	for (auto recipe : recipes) {
-		recipe.showInfo();
-	}
-	std::cout << "recipes are shown up" << endl;
 }
 
 void Greeter::addPlan() {

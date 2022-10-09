@@ -11,17 +11,10 @@ private:
 	PlanManager planmanager;
 	std::string temp_string_name;
 	RecipeDatabase* recipedb;
-	void searchRecipesByIngredient();
-	void searchRecipesByRecipeName();
 public:
 	Greeter();
 	void showTitle();
 	void showMenu();
-	void insertRecipe();
-	void deleteRecipe();
-	void updateRecipe();
-	void showAllRecipe();
-	void showRecipes(std::vector<Recipe> recipes);
 	void addPlan();
     void deletePlan();
     void updateMeal();
