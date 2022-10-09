@@ -5,22 +5,23 @@
 
 using namespace std;
 
-//생성자
+// initialize file_name with default txt file name
 FileManager::FileManager(){
     file_name = "DB_Recipe.txt";
 }
 
+// initialize file_name with new file name
 FileManager::FileManager(string new_file_name){
     file_name = new_file_name;
 }
 
-// 파일을 읽어서 파일의 내용을 2차원 문자열 리스트에 저장하는 함수
+// read txt file and returns string vector if file exists else create new txt file
 vector< vector<string> > FileManager::loadRecipeDB(){
     ifstream ifs;
     ofstream ofs;
     ifs.open(file_name);
     vector< vector<string> > data;
-    if (ifs.fail())                                 // 파일이 없으면 에러 출력
+    if (ifs.fail())
 	{
         ofs.open("DB_Recipe.txt");
         ofs.close();
@@ -31,7 +32,7 @@ vector< vector<string> > FileManager::loadRecipeDB(){
     char buffer[256];
     int i = 0;
 	while (ifs.getline(buffer, 256)) {
-		data.push_back(Parser::split(string(buffer),'/'));   // 구분자 : /
+		data.push_back(Parser::split(string(buffer),'/'));
         i += 1;
 	}
     ifs.close();
@@ -39,6 +40,7 @@ vector< vector<string> > FileManager::loadRecipeDB(){
     return data;
 }
 
+// write recipe data txt file with vector of string vector
 void FileManager::writeRecipeDB(vector<vector<string>> data){
     string line = "";
     ofstream ofs;
@@ -53,24 +55,26 @@ void FileManager::writeRecipeDB(vector<vector<string>> data){
     }
 
     ofs << line;
-    // line.clear();
     ofs.close();
 }
 
+// initialize file_name with default txt file name
 FileManagerForPlans::FileManagerForPlans() {
     file_name = "DB_Plans.txt";
 }
 
+// initialize file_name with new file name
 FileManagerForPlans::FileManagerForPlans(std::string file_name) {
     file_name = file_name;
 }
 
+// read txt file and returns string vector if file exists else create new txt file
 vector< vector<string> > FileManagerForPlans::loadPlans() {
     ifstream ifs;
     ofstream ofs;
     ifs.open(file_name);
     vector< vector<string> > data;
-    if (ifs.fail())                                 // 파일이 없으면 에러 출력
+    if (ifs.fail())
     {
         ofs.open("DB_Plans.txt");
         ofs.close();
@@ -81,7 +85,7 @@ vector< vector<string> > FileManagerForPlans::loadPlans() {
     char buffer[256];
     int i = 0;
     while (ifs.getline(buffer, 256)) {
-        data.push_back(Parser::split(string(buffer), '/'));   // 구분자 : /
+        data.push_back(Parser::split(string(buffer), '/'));
         i += 1;
     }
     ifs.close();
@@ -89,6 +93,7 @@ vector< vector<string> > FileManagerForPlans::loadPlans() {
     return data;
 }
 
+// write plan data txt file with vector of string vector
 void FileManagerForPlans::writePlans(vector<string> data) {
     string line = "";
     ofstream ofs;
