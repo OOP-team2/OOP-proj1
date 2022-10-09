@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// line을 받아 구분자를 기준으로 구분하여 vector로 반환하는 메소드
+// recives a string value and a delimeter then returns vector of string without delimeter
 vector<string> Parser::split(string str, char Delimiter) {
     istringstream iss(str);
     string buffer;
