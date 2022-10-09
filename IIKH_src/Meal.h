@@ -12,21 +12,24 @@ enum MealType { Breakfast, Launch, Dinner, None };
 class Meal {
 private:
     MealType mealtype = None;
-    int people = 0;
+    std::string people = "0";
     std::vector<Recipe> recipes;
 public:
     Meal();
-    Meal(MealType new_mealtype, int people);
+    Meal(MealType new_mealtype, std::string people);
     MealType getMealType();
     void setMealType(MealType new_mealtype);
-    int getPeople();
-    void setPeople(int new_people);
+    std::string getPeople();
+    void setPeople(std::string new_people);
     std::vector<Recipe> getRecipes();
     void addRecipe(Recipe Recipe);
+    void setRecipes(std::vector<Recipe> ex_recipes);
     void deleteRecipe(Recipe Recipe_to_delete);
     void showRecipes();
-    bool operator==(Meal other_meal);
-    bool operator< (const Meal& other_meal);
+    bool isSame(Meal other_meal);
+    bool isLesser(Meal other_meal);
+    static std::string mealTypeToString(MealType meal_type);
+    static MealType stringfiedToMealType(std::string string_meal_type);
 };
 
 #endif //OOP_PROJ1_MEAL_H

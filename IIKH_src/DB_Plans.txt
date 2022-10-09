@@ -1,2 +1,2 @@
-2022.10.09/Launch/3/chicken soup.30.chicken,water,onion,salt.fill water,put chicken,put salt,boil it
-2022.10.10/Dinner/4/pork roast.20.pork,onion,garlic.fire on,put pork on,put garlic and onion on,roast it/salad.10.cabage,olive oil,bread.slice cabage,put olive oil,bake bread
+2022.10.09.birthday/3/Launch/chicken soup.30.chicken,water,onion,salt.fill water,put chicken,put salt,boil it
+2022.10.10/4/Dinner/pork roast.20.pork,onion,garlic.fire on,put pork on,put garlic and onion on,roast it/salad.10.cabage,olive oil,bread.slice cabage,put olive oil,bake bread

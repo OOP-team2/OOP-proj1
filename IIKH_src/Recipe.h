@@ -1,9 +1,8 @@
 #ifndef Recipe_cpp
 #define Recipe_cpp
 
-#include<string>
-#include<vector>
-#include<iostream>
+#include "vector"
+#include "iostream"
 #include "string"
 #include "set"
 
@@ -49,6 +48,8 @@ class Recipe{
         bool operator==(Recipe other_recipe);
         // operator < is overloaded to compare
         bool operator<(const Recipe& other_recipe);
+        // function to return stringfied
+        std::string toString();
         // function to show name, preparetime
         void showInfo();
 };
