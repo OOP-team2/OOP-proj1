@@ -31,7 +31,13 @@ public:
     bool isLess(Plan other_plan);
     // function to get string representation of a plan
     std::string toString();
+    // overloaded operator to sort
+    bool operator<(const Plan& other_plan);
 };
 
+
+template<class T> bool planComparator(T t1, T t2) {
+    return t1 < t2;
+}
 
 #endif //OOP_PROJ1_PLAN_H

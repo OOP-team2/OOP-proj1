@@ -120,6 +120,8 @@ void Greeter::showMenu(){
 				cout << "[1] Add Plan" << endl;
 				cout << "[2] Delete Plan" << endl;
 				cout << "[3] Show All Plan" << endl;
+				cout << "[4] Show Plans By Period" << endl;
+				cout << "[5] Search Plans By Meal Type" << endl;
 				cout << "[0] Back To Menu" << endl;
 				int input_num_in_plan;
 				cin >> input_num_in_plan;
@@ -145,6 +147,20 @@ void Greeter::showMenu(){
 				else if (input_num_in_plan == 3) {
 					system("cls");
 					showAllPlans();
+					cout << endl << "Enter any key to go back" << endl;
+					cin.ignore(); 	cin.clear();
+					if (getchar())continue;
+				}
+				else if (input_num_in_plan == 4) {
+					system("cls");
+					showPlansByPeriod();
+					cout << endl << "Enter any key to go back" << endl;
+					cin.ignore(); 	cin.clear();
+					if (getchar())continue;
+				}
+				else if (input_num_in_plan == 5) {
+					system("cls");
+					showPlansByMealType();
 					cout << endl << "Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
@@ -237,4 +253,28 @@ void Greeter::deletePlan() {
 void Greeter::showAllPlans() {
 	planmanager.showInfo();
 	return;
+}
+
+// is shows all plans by meal type
+void Greeter::showPlansByMealType() {
+	string mealtype;
+	cout << "Enter a Meal Type you want to search" << endl;
+	getline(cin, mealtype);
+	vector<Plan> searchResult = planmanager.searchPlansByMealType(Meal::stringfiedToMealType(mealtype));
+	for (auto plan : searchResult) {
+		plan.showInfo();
+	}
+	cout << "all plans matched is shown" << endl;
+}
+
+// it shows plans by period. year, month, week, day from now
+void Greeter::showPlansByPeriod() {
+	string period;
+	cout << "Enter a period you want to see: " << endl;
+	getline(cin, period);
+	vector<Plan> plansByPeriod = planmanager.getPlansByPeriod(period);
+	for (auto plan : plansByPeriod) {
+		plan.showInfo();
+	}
+	cout << "all plans in a period you wanted shown up" << endl;
 }

@@ -67,6 +67,16 @@ bool Plan::isSame(Plan other_plan) {
     }
 }
 
+// operator < is overloaded to compare and sort
+bool Plan::operator<(const Plan& other_plan) {
+    if (date.isLess(other_plan.date)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 // returns string representation of a plan
 std::string Plan::toString() {
     std::string eachPlan = "";
