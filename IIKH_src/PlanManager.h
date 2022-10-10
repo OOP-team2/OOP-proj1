@@ -9,6 +9,7 @@
 #include "Recipe.h"
 #include "iostream"
 #include "vector"
+#include "algorithm"
 
 // Class for managing plans
 class PlanManager {
@@ -32,11 +33,16 @@ public:
     void updateMealType(Plan plan, MealType meal_type);
     // function to update a date of a plan
     void updateDate(Plan plan, Date date);
+    // function to search plans by Meal Type
+    std::vector<Plan> searchPlansByMealType(MealType mealtype);
+    // function to sort plans by Date
+    void sortPlansByDate();
+    // function to get plans by period(day,week,month,year)
+    std::vector<Plan> getPlansByPeriod(std::string period);
     // function to save plans to txt file
     void savePlans();
     // function to print out information of plans
     void showInfo();
 };
-
 
 #endif //OOP_PROJ1_PLANMANAGER_H

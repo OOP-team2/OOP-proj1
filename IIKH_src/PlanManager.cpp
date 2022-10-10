@@ -49,6 +49,7 @@ Plan PlanManager::getPlanAt(int index) {
 // push a plan back to plans and save current plans to txt file
 void PlanManager::addPlan(Plan plan) {
     plans.push_back(plan);
+    sortPlansByDate();
     savePlans();
     return;
 }
@@ -121,8 +122,83 @@ void PlanManager::updateDate(Plan plan, Date date) {
     plans.erase(iter);
     Plan newPlan = Plan(date, exMeal);
     plans.insert(iter, newPlan);
+    sortPlansByDate();
     std::cout << "update finished" << "\n";
     return;
+}
+
+std::vector<Plan> PlanManager::searchPlansByMealType(MealType mealtype) {
+    std::vector<Plan> searchResult;
+    for (auto plan : plans) {
+        if (plan.getMeal().getMealType() == mealtype) {
+            searchResult.push_back(plan);
+        }
+    }
+    return searchResult;
+}
+
+// sorts plans by date
+void PlanManager::sortPlansByDate() {
+    std::sort(plans.begin(),plans.end(), planComparator<Plan>);
+    std::cout << "plans are sorted by Date" << endl;
+}
+
+// returns plans by period(day,week,month,year)
+std::vector<Plan> PlanManager::getPlansByPeriod(std::string period) {
+    std::vector<Plan> plansByPeriod;
+    if (period == "year") {
+        std::string baseYear = plans.at(0).getDate().getYear();
+        for (auto plan : plans) {
+            if (plan.getDate().getYear() != baseYear) {
+                break;
+            }
+            else {
+                plansByPeriod.push_back(plan);
+            }
+        }
+        return plansByPeriod;
+    }
+    else if (period == "month") {
+        std::string baseMonth = plans.at(0).getDate().getMonth();
+        for (auto plan : plans) {
+            if (plan.getDate().getMonth() != baseMonth) {
+                break;
+            }
+            else {
+                plansByPeriod.push_back(plan);
+            }
+        }
+        return plansByPeriod;
+    }
+    else if (period == "week") {
+        std::string baseDay = plans.at(0).getDate().getDay();
+        int baseDayInt = std::stoi(baseDay);
+        int dayAfterAWeek = baseDayInt + 7;
+        for (auto plan : plans) {
+            if (std::stoi(plan.getDate().getDay()) == dayAfterAWeek) {
+                break;
+            }
+            else {
+                plansByPeriod.push_back(plan);
+            }
+        }
+        return plansByPeriod;
+    }
+    else if (period == "day") {
+        std::string baseDay = plans.at(0).getDate().getDay();
+        for (auto plan : plans) {
+            if (plan.getDate().getDay() != baseDay) {
+                break;
+            }
+            else {
+                plansByPeriod.push_back(plan);
+            }
+        }
+        return plansByPeriod;
+    }
+    else {
+        return plans;
+    }
 }
 
 // save current plans to txt file
