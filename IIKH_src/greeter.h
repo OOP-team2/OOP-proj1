@@ -25,6 +25,10 @@ public:
 	void addPlan();
 	// function to get user input and delete a plan of plan manager
     void deletePlan();
+	// function to show plans by period
+	void showPlansByPeriod();
+	// function to search plans by meal type
+	void showPlansByMealType();
 	// function to show all plans 
     void showAllPlans();
 };
