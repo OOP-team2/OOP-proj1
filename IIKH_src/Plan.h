@@ -3,7 +3,6 @@
 
 #include "Meal.h"
 #include "Date.h"
-#include "SerializeHelper.h"
 #include "iostream"
 
 // Class for plan 
