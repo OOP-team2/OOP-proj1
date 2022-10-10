@@ -123,8 +123,6 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="greeter.cpp" />
-    <ClCompile Include="Ingredient.cpp" />
-    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Meal.cpp" />
     <ClCompile Include="Parser.cpp" />
@@ -132,14 +130,11 @@
     <ClCompile Include="PlanManager.cpp" />
     <ClCompile Include="Recipe.cpp" />
     <ClCompile Include="RecipeDatabase.cpp" />
-    <ClCompile Include="SerializeHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="greeter.h" />
-    <ClInclude Include="Ingredient.h" />
-    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Meal.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Plan.h" />
@@ -147,7 +142,6 @@
     <ClInclude Include="Recipe.h" />
     <ClInclude Include="RecipeDatabase.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="SerializeHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="DB_Plans.txt">

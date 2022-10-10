@@ -1,6 +1,7 @@
-//RecipeDB
 #include "RecipeDatabase.h"
 
+//RecipeDB
+// initialize variables to use as static
 RecipeDatabase* RecipeDatabase::recipe_db = NULL;
 FileManager RecipeDatabase::file_manager = FileManager();
 std::vector< std::vector<std::string> > RecipeDatabase::data = {};
