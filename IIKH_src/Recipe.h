@@ -14,6 +14,8 @@ class Recipe{
         std::vector<std::string> cooking_order;
     
     public:
+
+        //Constructor of Recipe
         Recipe();
         Recipe(std::string new_recipe_name,std::string new_prepare_time,std::set<std::string> new_ingredients, std::vector<std::string> new_cooking_order);
     
