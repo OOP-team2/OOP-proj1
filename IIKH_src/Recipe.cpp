@@ -68,7 +68,6 @@ void Recipe::updateIngredient(std::string ingredient_to_update){
     ingredients.insert(ingredient_to_update);
 }
 
-
 // delete an ingredient from ingredients
 void Recipe::deleteIngredient(std::string ingredientName){
     auto iter = ingredients.begin();
@@ -99,7 +98,7 @@ void Recipe::deleteCookingOrder(std::string cooking_order_to_delete){
     cooking_order.erase(iter);
 }
 
-// check if this recipe has an ingredient
+// check ingredient existence
 bool Recipe::hasIngredient(std::string ingredient) {
     for(std::string ing : ingredients){
         if (ing.find(ingredient) != std::string::npos && ing.find(ingredient) >= 0)
@@ -165,7 +164,7 @@ bool Recipe::operator==(const Recipe& other_recipe) {
     }
 }
 
-// operator to check if less recipe
+//function to overload < operator 
 bool Recipe::operator<(const Recipe& other_recipe) {
     if (recipe_name < other_recipe.recipe_name) return true;
     if (recipe_name > other_recipe.recipe_name) return false;
