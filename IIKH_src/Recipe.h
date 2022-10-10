@@ -6,19 +6,23 @@
 #include "string"
 #include "set"
 
+// Class for a recipe
 class Recipe{
     private:
+        // variable for a name of a recipe
         std::string recipe_name;
+        // variable for a preperation time of a recipe
         std::string prepare_time;
+        // variable for ingredients of a recipe
         std::set<std::string> ingredients;
+        // variable for cooking order of a recipe
         std::vector<std::string> cooking_order;
     
     public:
-
-        //Constructor of Recipe
+        // default constructor for Recipe
         Recipe();
+        // constructor with parameters(string,string,set<string>,vector<string>)
         Recipe(std::string new_recipe_name,std::string new_prepare_time,std::set<std::string> new_ingredients, std::vector<std::string> new_cooking_order);
-    
         // a getter for recipe_name
         std::string getRecipeName();
         // a setter for recipe_name
@@ -27,7 +31,6 @@ class Recipe{
         std::string getPrepareTime();
         // a setter for prepare time
         void setPrepareTime(std::string s_time);
-
         // a getter for ingredients
         std::set<std::string> getIngredients();
         // a setter for setting whole ingredients 
@@ -37,7 +40,7 @@ class Recipe{
         // a setter for setting whole cooking_order
         void setCookingOrder(std::vector<std::string> order);
         // function to edit specific ingredient
-        void editIngredient(std::string edit_ingredient);
+        void updateIngredient(std::string edit_ingredient);
         // function to remove specifc ingredient
         void deleteIngredient(std::string ingredient);
         // function to add a cooking order
@@ -47,7 +50,7 @@ class Recipe{
         // function to return wheter has ingredient
         bool hasIngredient(std::string ingredient);
         // operator == is overloaded to compare
-        bool operator==(Recipe other_recipe);
+        bool operator==(const Recipe& other_recipe);
         // operator < is overloaded to compare
         bool operator<(const Recipe& other_recipe);
         // function to return stringfied

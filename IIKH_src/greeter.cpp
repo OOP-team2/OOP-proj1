@@ -144,7 +144,7 @@ void Greeter::showMenu(){
 				}
 				else if (input_num_in_plan == 3) {
 					system("cls");
-					showAllPlan();
+					showAllPlans();
 					cout << endl << "Enter any key to go back" << endl;
 					cin.ignore(); 	cin.clear();
 					if (getchar())continue;
