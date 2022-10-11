@@ -3,7 +3,7 @@
 //RecipeDB
 // initialize variables to use as static
 RecipeDatabase* RecipeDatabase::recipe_db = NULL;
-FileManager RecipeDatabase::file_manager = FileManager();
+FileManagerForRecipes RecipeDatabase::file_manager = FileManagerForRecipes();
 std::vector< std::vector<std::string> > RecipeDatabase::data = {};
 std::vector<Recipe> RecipeDatabase::recipe_list = {};
 
@@ -13,8 +13,8 @@ std::vector<Recipe> RecipeDatabase::recipe_list = {};
 */
 RecipeDatabase::RecipeDatabase(){
     std::vector< std::vector<std::string> > data;
-    file_manager = FileManager();
-    data = file_manager.loadRecipeDB();
+    file_manager = FileManagerForRecipes();
+    data = file_manager.loadDB();
 
     for(std::vector <std::string> recipe : data){
         std::vector<std::string> ingredients = Parser::split(recipe[2], ',');
