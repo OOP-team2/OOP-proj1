@@ -93,8 +93,8 @@ MealType Meal::stringfiedToMealType(std::string string_meal_type) {
     if (string_meal_type == "Breakfast") {
         return Breakfast;
     }
-    else if (string_meal_type == "Launch") {
-        return Launch;
+    else if (string_meal_type == "Lunch") {
+        return Lunch;
     }
     else if (string_meal_type == "Dinner") {
         return Dinner;
@@ -112,8 +112,8 @@ std::string Meal::mealTypeToString(MealType meal_type) {
     case Breakfast:
         stringfied = "Breakfast";
         break;
-    case Launch:
-        stringfied = "Launch";
+    case Lunch:
+        stringfied = "Lunch";
         break;
     case Dinner:
         stringfied = "Dinner";

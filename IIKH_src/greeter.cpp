@@ -215,7 +215,7 @@ void Greeter::addPlan() {
 	userInput.clear();
 
 	cout << "Let's add a Meal!" << endl;
-	cout << "Enter a Meal Type(Breakfast or Launch or Dinner)" << endl;
+	cout << "Enter a Meal Type(Breakfast or Lunch or Dinner)" << endl;
 	getline(cin, userInput);
 	MealType newMealType;
 	newMealType = Meal::stringfiedToMealType(userInput);
@@ -263,7 +263,7 @@ void Greeter::showAllPlans() {
 // is shows all plans by meal type
 void Greeter::showPlansByMealType() {
 	string mealtype;
-	cout << "Enter a Meal Type you want to search(one of Breakfast, Launch, Dinner)" << endl;
+	cout << "Enter a Meal Type you want to search(one of Breakfast, Lunch, Dinner)" << endl;
 	getline(cin, mealtype);
 	vector<Plan> searchResult = planmanager.searchPlansByMealType(Meal::stringfiedToMealType(mealtype));
 	for (auto plan : searchResult) {

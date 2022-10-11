@@ -2,7 +2,7 @@
 /.vs
 c:imake-build-debug
 ./IIKH_src/Debug
-./IKH_src/x64
+./IIKH_src/x64/Debug
 ./out
 ./IIKH_Test/x64
 *.db
