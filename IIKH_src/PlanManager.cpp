@@ -6,7 +6,7 @@ PlanManager::PlanManager() {
     vector<string> date_data, recipe_data;
     string people;
     MealType mealtype;
-    vector<vector<string> > plan_data = file_manager.loadPlans();
+    vector<vector<string> > plan_data = file_manager.loadDB();
     for (vector<string> plan_by_line : plan_data) {
         date_data = Parser::split(plan_by_line[0], '.');
         people = plan_by_line[1];
