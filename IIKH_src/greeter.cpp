@@ -119,7 +119,7 @@ void Greeter::showMenu(){
 				cout << "---------" << endl;
 				cout << "[1] Add Plan" << endl;
 				cout << "[2] Delete Plan" << endl;
-				cout << "[3] Show All Plan" << endl;
+				cout << "[3] Show All Plans" << endl;
 				cout << "[4] Show Plans By Period" << endl;
 				cout << "[5] Search Plans By Meal Type" << endl;
 				cout << "[0] Back To Menu" << endl;
@@ -209,6 +209,11 @@ void Greeter::addPlan() {
 	newDate.setDay(userInput);
 	userInput.clear();
 
+	cout << "Enter annotation: ";
+	getline(cin, userInput);
+	newDate.setAnnotation(userInput);
+	userInput.clear();
+
 	cout << "Let's add a Meal!" << endl;
 	cout << "Enter a Meal Type(Breakfast or Launch or Dinner)" << endl;
 	getline(cin, userInput);
@@ -258,7 +263,7 @@ void Greeter::showAllPlans() {
 // is shows all plans by meal type
 void Greeter::showPlansByMealType() {
 	string mealtype;
-	cout << "Enter a Meal Type you want to search" << endl;
+	cout << "Enter a Meal Type you want to search(one of Breakfast, Launch, Dinner)" << endl;
 	getline(cin, mealtype);
 	vector<Plan> searchResult = planmanager.searchPlansByMealType(Meal::stringfiedToMealType(mealtype));
 	for (auto plan : searchResult) {
@@ -270,11 +275,36 @@ void Greeter::showPlansByMealType() {
 // it shows plans by period. year, month, week, day from now
 void Greeter::showPlansByPeriod() {
 	string period;
-	cout << "Enter a period you want to see: " << endl;
+	cout << "Enter a period you want to see(one of year, month, week, day): " << endl;
 	getline(cin, period);
 	vector<Plan> plansByPeriod = planmanager.getPlansByPeriod(period);
 	for (auto plan : plansByPeriod) {
 		plan.showInfo();
+	}
+	cout << "Do you want a grocery list for this period?(y/n)" << endl;
+	string answer;
+	getline(cin, answer);
+	if (answer == "y") {
+		unordered_map<string, int> groceries;
+		for (Plan plan : plansByPeriod) {
+			vector<Recipe> recipes = plan.getMeal().getRecipes();
+			for (Recipe recipe : recipes) {
+				set<string> ingredients = recipe.getIngredients();
+				for (string ing : ingredients) {
+					if (groceries.find(ing) == groceries.end()) {
+						groceries[ing] = 1;
+					}
+					else {
+						groceries[ing]++;
+					}
+				}
+			}
+		}
+
+		cout << "This is an integrated grocery list for this period" << endl;
+		for (auto item : groceries) {
+			cout << item.second << " of " << item.first << endl;
+		}
 	}
 	cout << "all plans in a period you wanted shown up" << endl;
 }
