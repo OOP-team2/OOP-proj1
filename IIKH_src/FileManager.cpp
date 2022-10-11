@@ -1,22 +1,19 @@
 #include "FileManager.h"
-#include "Parser.h"
-#include "iostream"
-#include "fstream"
 
 using namespace std;
 
 // initialize file_name with default txt file name
-FileManager::FileManager(){
+FileManagerForRecipes::FileManagerForRecipes(){
     file_name = "DB_Recipe.txt";
 }
 
 // initialize file_name with new file name
-FileManager::FileManager(string new_file_name){
+FileManagerForRecipes::FileManagerForRecipes(string new_file_name){
     file_name = new_file_name;
 }
 
 // read txt file and returns string vector if file exists else create new txt file
-vector< vector<string> > FileManager::loadRecipeDB(){
+vector< vector<string> > FileManagerForRecipes::loadDB(){
     ifstream ifs;
     ofstream ofs;
     ifs.open(file_name);
@@ -41,7 +38,7 @@ vector< vector<string> > FileManager::loadRecipeDB(){
 }
 
 // write recipe data txt file with vector of string vector
-void FileManager::writeRecipeDB(vector<vector<string>> data){
+void FileManagerForRecipes::writeRecipeDB(vector<vector<string>> data){
     string line = "";
     ofstream ofs;
     ofs.open(file_name, ios::out);
@@ -69,7 +66,7 @@ FileManagerForPlans::FileManagerForPlans(std::string file_name) {
 }
 
 // read txt file and returns string vector if file exists else create new txt file
-vector< vector<string> > FileManagerForPlans::loadPlans() {
+vector< vector<string> > FileManagerForPlans::loadDB() {
     ifstream ifs;
     ofstream ofs;
     ifs.open(file_name);
