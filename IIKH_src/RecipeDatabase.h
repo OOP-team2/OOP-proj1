@@ -13,7 +13,7 @@
 */
 class RecipeDatabase{
     private:
-        static FileManager file_manager;                                                   // Object to load and write recipe data from stored file
+        static FileManagerForRecipes file_manager;                                                   // Object to load and write recipe data from stored file
         static std::vector< std::vector<std::string> > data;                               // raw data of recipes
         static std::vector<Recipe> recipe_list;                                            // Database of recipes at runtime
 
