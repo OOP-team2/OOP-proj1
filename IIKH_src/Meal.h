@@ -4,12 +4,12 @@
 #include "Recipe.h"
 
 // enum for meal type
-enum MealType { Breakfast, Launch, Dinner, None };
+enum MealType { Breakfast, Lunch, Dinner, None };
 
 // Class for meal for a plan
 class Meal {
 private:
-    // MealType variable for meal type(Breakfast, Launch, Dinner)
+    // MealType variable for meal type(Breakfast, Lunch, Dinner)
     MealType mealtype = None;
     // string variable for people invited for a meal
     std::string people = "0";
