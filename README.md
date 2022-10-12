@@ -1,6 +1,8 @@
-# proj 1
+# 2022-2 OOP(02)
+## team#1
+## proj 1/prob1
 
-# 요구사항 분석
+### 요구사항 분석
 
 IIKH(Interactive Intelligent Kitchen Helper)
 
@@ -27,7 +29,7 @@ recipe의 데이터 베이스를 유지하는 것 뿐만 아니라, 음식을 �
 - recipe 출력 화면에서, 프린터로 출력하는 기능
 - “quit”을 선택하면 어플리케이션 종료
 
-# components
+### components
 
 소프트웨어 엔지니어링은 identification 과 development로 단순화 할 수 있다. 
 
@@ -42,7 +44,7 @@ recipe의 데이터 베이스를 유지하는 것 뿐만 아니라, 음식을 �
 
 카드의 앞면에는 컴포넌트의 이름과 책임을 쓰고, 카드의 뒷면에는 상호작용해야하는 컴포넌트의 이름을 쓴다. 이런 카드는 CRC(Component, Responsibility, Collaborator) 카드로 알려져있기도 하다. 컴포넌트의 책임이 발견되면, 그들은 CRC card의 앞면에 기록된다.
 
-# The What / Who Cycle
+### The What / Who Cycle
 컴포넌트들은 시스템의 작동 과정을 상상하는 과정에서 식별된다.
 이 작업은 종종 누가, 무엇을 사이클로 진행된다.
 먼저, 디자인 팀은 다음에 무엇(활동)이 수행되어야할지를 식별한다. 이것은 즉시 누가 이 행동을 수행할지를
@@ -50,3 +52,13 @@ recipe의 데이터 베이스를 유지하는 것 뿐만 아니라, 음식을 �
 비슷해진다. 수행되어야할 작업은 반드시 책임으로써 어떤 컴포넌트에 할당되어야한다.
 
 좋은 객체지향 프로그래밍 디자인을 하는 방법은 먼저 각 행동에 대해 수행할 요원을 지정하는 것이다.
+
+---
+
+# Results
+## Design 
+![Class Diagram](/readme_assets/IIKH.png)
+
+## How to compile & execute
+please read README.txt
+[README.txt](/readme_assets/README.txt)
